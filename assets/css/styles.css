@@ -2,8 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto Slab", serif;
   font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto Slab", serif;
 }
 html {
   background-color: #212121;
