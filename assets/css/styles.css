@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto Slab", serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 html {
   background-color: #212121;
@@ -240,14 +241,22 @@ w-full {
     top: 90%;
     left: 50%;
   }
+
   .social {
     display: none;
   }
   .hero-right {
     height: 60%;
-    padding: 10rem 5rem 2rem 5rem;
+    padding: 7rem 3rem 2rem 3rem;
     font-size: 3rem;
     font-weight: 500;
+  }
+  .hero-right > div {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .hero-right > p {
+    font-size: 2rem;
   }
 }
 /* EDUCATION SECTION */
@@ -295,12 +304,31 @@ w-full {
   }
   .education-card {
     width: 100%;
-    border-radius: 10px;
     margin: 20px 0;
-    transition: all 300ms;
   }
   .edu-text {
     font-size: 3rem;
+  }
+}
+@media (max-width: 767px) {
+  #education {
+    padding: 2rem 3rem;
+    padding-top: 0;
+  }
+  .education-card {
+    padding: 1rem;
+    width: 100%;
+    border-radius: 10px;
+    margin: 15px 0;
+    transition: all 300ms;
+  }
+  .edu-card-icon > img {
+    max-width: 8rem;
+    padding: 0 10px;
+  }
+
+  .edu-text {
+    font-size: 1.5rem;
   }
 }
 
@@ -332,6 +360,15 @@ w-full {
   }
 }
 
+@media (max-width: 767px) {
+  #skills {
+    padding: 0rem 3rem;
+  }
+  .skill-card {
+    min-width: 45%;
+  }
+}
+
 /* PORJECT SECTION */
 #projects {
   padding: 2rem 5rem;
@@ -355,6 +392,19 @@ w-full {
   }
   .project-card {
     min-width: 48%;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  #projects {
+    padding: 2rem 3rem;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  .project-card {
+    min-width: 100%;
     border-radius: 1rem;
     padding: 1rem;
   }
@@ -398,6 +448,22 @@ w-full {
   }
   .blog-card {
     width: 48%;
+  }
+}
+@media (max-width: 767px) {
+  #blogs {
+    padding: 2rem 3rem;
+    padding-top: 0;
+  }
+  #blogs > div {
+    flex-wrap: wrap;
+  }
+  .blog-card > div > p {
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+  .blog-card {
+    width: 100%;
   }
 }
 
@@ -460,5 +526,34 @@ w-full {
     font-size: 2rem;
     color: white;
     font-weight: 400;
+  }
+}
+@media (max-width: 767px) {
+  #contact-section {
+    padding: 2rem 3rem;
+    flex-direction: column;
+  }
+  #contact-form {
+    width: 100%;
+    border-top: 4px solid #6231a2;
+    padding: 2rem;
+  }
+  #contact-info {
+    padding: 2rem;
+    width: 100%;
+    gap: 1rem;
+    overflow: hidden;
+  }
+  #contact-info > div > img {
+    max-width: 4rem;
+    padding: 8px;
+  }
+  #contact-info > div > p {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  #contact-form > div > label {
+    font-size: 2rem;
+    font-weight: 500;
   }
 }
