@@ -182,6 +182,55 @@ w-full {
   color: #742ad3;
   font-weight: 700;
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero {
+    flex-direction: column;
+    width: 100%;
+    height: 100rem;
+  }
+  .hero-left {
+    background-color: #742ad3;
+    min-height: 30%;
+    padding: 2rem;
+    padding-left: 5rem;
+    position: relative;
+  }
+  .hero-left > img {
+    min-width: 350px;
+    max-height: 360px;
+    border: 15px solid #742ad3;
+    left: 20rem;
+    top: 9rem;
+  }
+
+  .hero-left > p {
+    font-size: 3rem;
+  }
+
+  .social {
+    display: none;
+  }
+
+  .hero-right {
+    height: 60%;
+    padding: 10rem 5rem 2rem 5rem;
+    font-size: 3rem;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+  }
+  .hero-left {
+    width: 100%;
+  }
+}
+
 /* EDUCATION SECTION */
 
 #education {
@@ -190,7 +239,7 @@ w-full {
 }
 
 .education-card {
-  padding: 10px;
+  padding: 2rem;
   background-color: #742ad3;
   width: 50%;
   border-radius: 10px;
@@ -221,9 +270,24 @@ w-full {
   font-weight: 500;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  #education {
+    padding-top: 0;
+  }
+  .education-card {
+    width: 100%;
+    border-radius: 10px;
+    margin: 20px 0;
+    transition: all 300ms;
+  }
+  .edu-text {
+    font-size: 3rem;
+  }
+}
+
 /* SKILLS */
-#Skills {
-  padding: 10rem;
+#skills {
+  padding: 0rem 5rem;
 }
 
 .skill-card {
@@ -231,47 +295,71 @@ w-full {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0.5rem 0.5rem 4rem #742ad3;
-  margin: 1rem;
   overflow: hidden;
 }
 
 .skill-card > img {
   max-width: 10rem;
   max-height: 10rem;
+  margin: 2rem 0;
 }
 
 .skill-card > P {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
-/* PORJECT SECTION */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .skill-card {
+    min-width: 30%;
+  }
+}
 
+/* PORJECT SECTION */
+#projects {
+  padding: 2rem 5rem;
+}
 .project-card {
   width: 24%;
   background-color: #6231a2;
   border-radius: 10px;
-  padding: 10px;
+  padding: 1rem;
 }
 
 .project-card > p {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #projects {
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  .project-card {
+    min-width: 48%;
+
+    background-color: #6231a2;
+    border-radius: 10px;
+    padding: 1rem;
+  }
 }
 
 /* BLOG CARD */
+#blogs {
+  padding: 2rem 5rem;
+}
 .blog-card {
   width: 30%;
   background-color: #6231a2;
   border-radius: 10px;
   overflow: hidden;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 
 .blog-card > img {
   max-width: 100%;
 }
 .blog-card > div {
-  padding: 10px;
+  padding: 1.5rem;
 }
 .blog-card > div > p {
   margin: 1rem 0;
@@ -281,13 +369,16 @@ w-full {
   font-weight: 500;
 }
 .blog-card > div :nth-child(3) {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .blog-card > div :nth-child(2) {
   font-size: 2rem;
   font-weight: 600;
 }
 /* CONTACT FORM */
+#contact-section {
+  padding: 2rem 5rem;
+}
 #contact-form > div > label {
   color: #742ad3;
   font-size: 30px;
