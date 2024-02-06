@@ -1,0 +1,71 @@
+#blog-hero {
+  background: url("../images/hero-section.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+#blog-hero {
+  color: white;
+
+  width: 100%;
+}
+
+#hero-right {
+  font-size: 4rem;
+  width: 50%;
+  font-weight: 700;
+  padding: 3rem 6rem;
+}
+#hero-right > div :nth-child(2) {
+  text-align: justify;
+}
+
+#hero-right > div > a {
+  background-color: #742ad3;
+  border-radius: 10px;
+  color: white;
+  font-size: 2rem;
+  padding: 1rem 3rem;
+  text-align: center;
+  display: block;
+}
+#hero-right > div > a:hover {
+  background-color: #8c3ff0;
+}
+
+#search {
+  padding: 0 5rem;
+}
+
+#search-div {
+  margin: 2rem 0;
+  color: white;
+  border-radius: 5rem;
+}
+
+#search-div > div > input {
+  padding: 1rem;
+  background-color: #212121;
+  outline: none;
+  color: white;
+  font-size: 1.8rem;
+  border: none;
+}
+
+#search-div > div {
+  border: 2px solid #742ad3;
+  padding: 0.5rem;
+}
+
+#search-div > button {
+  background-color: #742ad3;
+  border: none;
+  color: white;
+  padding: 0 2rem;
+  font-size: 2rem;
+}
+
+#search-div > button :hover {
+  cursor: pointer;
+}
