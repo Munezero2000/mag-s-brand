@@ -252,13 +252,16 @@ w-full {
     top: 90%;
     left: 50%;
   }
+  .hero-left > p {
+    font-size: 3rem;
+  }
 
-  .social {
+  #hero-icon {
     display: none;
   }
   .hero-right {
     height: 60%;
-    padding: 7rem 3rem 2rem 3rem;
+    padding: 10rem 3rem 2rem 3rem;
     font-size: 3rem;
     font-weight: 500;
   }
@@ -439,9 +442,12 @@ w-full {
   border-radius: 10px;
   overflow: hidden;
   margin: 2rem 0;
+  transition: all 200ms ease-out;
 }
 
 .blog-card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 40px #742ad3;
 }
 
 .blog-card > img {
