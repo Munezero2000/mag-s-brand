@@ -223,7 +223,7 @@ w-full {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .hero {
     flex-direction: column;
     width: 100%;
@@ -313,7 +313,7 @@ w-full {
     font-size: 3rem;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   #education {
     padding: 2rem;
     padding-top: 0;
@@ -363,7 +363,7 @@ w-full {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   #skills {
     padding: 0rem 3rem;
   }
@@ -405,7 +405,7 @@ w-full {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   #projects {
     padding: 2rem;
     max-width: 100%;
@@ -423,7 +423,7 @@ w-full {
 
 /* BLOG CARD */
 #blogs {
-  padding: 2rem 5rem;
+  padding: 2rem 10rem;
 }
 .blog-card {
   width: 30%;
@@ -461,7 +461,7 @@ w-full {
     width: 48%;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   #blogs {
     padding: 2rem;
     padding-top: 0;
@@ -473,14 +473,19 @@ w-full {
     margin: 1rem 0;
     font-size: 1rem;
   }
+  .blog-card > img {
+    max-width: 40%;
+  }
   .blog-card {
     width: 100%;
+    flex-direction: row-reverse;
+    object-fit: contain;
   }
 }
 
 /* CONTACT FORM */
 #contact-section {
-  padding: 2rem 5rem;
+  padding: 2rem 10rem;
 }
 #contact-form > div > label {
   color: #742ad3;
@@ -525,7 +530,7 @@ w-full {
   color: white;
   font-weight: 600;
 }
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 601px) and (max-width: 1023px) {
   #contact-form > div > label {
     color: #742ad3;
     font-size: 2.5rem;
@@ -539,7 +544,7 @@ w-full {
     font-weight: 400;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   #contact-section {
     padding: 2rem;
     flex-direction: column;
@@ -672,10 +677,11 @@ w-full {
   color: #742ad3;
   background-color: white;
 }
-@media (min-width: 600px) and (max-width: 1023px) {
+@media (min-width: 767px) and (max-width: 1023px) {
   .auth-container {
     height: auto;
     padding: 2rem;
+    overflow: hidden;
   }
   .login-right > p {
     font-size: 3rem;
@@ -698,7 +704,7 @@ w-full {
     width: 100%;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .auth-container {
     height: auto;
     padding: 2rem;
@@ -717,5 +723,9 @@ w-full {
 
   .login-right {
     width: 100%;
+  }
+  .btn {
+    font-size: 2.5rem;
+    padding: 1rem 4rem;
   }
 }

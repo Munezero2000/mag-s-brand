@@ -25,7 +25,8 @@
             <p>It's all about</p>
             <p class="highlighted" style="text-align: right;">Technology</p>
             <div class="flex space-around">
-                <a href="" style="text-align: right;">Start Reading <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="./register.html" style="text-align: right;">Register today<i
+                        class="fa-solid fa-arrow-right"></i></a>
             </div>
 
         </div>
@@ -41,10 +42,16 @@
         </div>
         <div id="search-div" class="flex">
             <div>
-                <i class="fa-solid fa-magnifying-glass fa-2x"></i>
-                <input placeholder="Enter a title to search" type="text">
+                <i class="fa-solid fa-filter fa-2x"></i>
+                <Select>
+                    <option disabled selected value="">Filter by</option>
+                    <option value="">Machine Learning</option>
+                    <option value="">Back-End Development</option>
+                    <option value="">Front-End Development</option>
+                    <option value="">Internet of Things</option>
+                </Select>
             </div>
-            <button>Search</button>
+
         </div>
     </section>
     <section id="blogs">
@@ -135,14 +142,64 @@
             </div>
         </div>
     </section>
-    <section id="subscribe" class="flex ">
-        <div class="gpa-4">
+    <section id="subscribe" class="flex">
+        <div id="sub-desc">
             <p>Subsribe to my newsletter so you won't miss any updates</p>
-            <div><input type="text" placeholder="Enter your email"><button>Send <i
-                        class="fa-light fa-paper-plane"></i></button></div>
+            <div class="flex"><input type="text" placeholder="Enter your email"><button class="flex space-between">
+                    <p>Send</p> <i class="fa-solid fa-paper-plane"></i>
+                </button></div>
         </div>
-        <img src="./assets/images/blogger.svg" alt="">
+        <div id="sub-img" class="flex flex-end">
+            <img src="./assets/images/blogger.svg" alt="">
+        </div>
+
     </section>
+    <footer class="flex w-full" id="contact-section">
+        <form action="" id="contact-form">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" placeholder="Munezero Ange">
+            </div>
+            <div>
+                <label for=" name">Email</label>
+                <input type="email" placeholder="munezero123@gmail.com">
+            </div>
+            <div>
+                <label for="name">Message</label>
+                <textarea style="resize: none;" name="" resizable="false" id="" cols="20" rows="10"
+                    placeholder="Write your message here..."></textarea>
+            </div>
+            <div id="form-btn" class="flex">
+                Send <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </form>
+        <div id="contact-info" class="flex flex-col space-between">
+            <div class=" flex flex-center  gap-4">
+                <img src=" ./assets/images/phone.svg" alt="">
+                <p>munezero05200@gmail.com</p>
+            </div>
+            <div class="flex flex-center gap-4">
+                <img src=" ./assets/images/phone.svg" alt="">
+                <p>Kigali-Rwanda</p>
+            </div>
+            <div class="flex flex-center gap-4">
+                <img src=" ./assets/images/phone.svg" alt="">
+                <p>+250783172388</p>
+            </div>
+            <div class="flex flex-center gap-4">
+                <img src=" ./assets/images/phone.svg" alt="">
+                <p>P.O BOX 000 Kigali</p>
+            </div>
+            <div class=" social flex space-between flex-center" style="padding-left: 8rem;">
+                <a href="https://fontawesome.com/"><i class="fa-brands fa-twitter icon fa-3x"></i></a>
+                <a><i class="fa-brands fa-square-github icon fa-3x"></i></a>
+                <a><i class="fa-brands fa-square-instagram icon fa-3x"></i></a>
+                <a><i class="fa-brands fa-youtube icon fa-3x"></i></a>
+                <a><i class="fa-brands fa-blogger-b icon fa-3x"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

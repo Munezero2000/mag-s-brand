@@ -3,11 +3,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
-}
-
-#blog-hero {
-  color: white;
-  padding: 2rem 10rem;
+  padding: 2rem 5rem;
   width: 100%;
 }
 
@@ -32,7 +28,27 @@
 #hero-right > div > a:hover {
   background-color: #8c3ff0;
 }
-
+@media (min-width: 768px) and (max-width: 1023px) {
+  #blog-hero {
+    background-size: auto;
+  }
+  #hero-right {
+    font-size: 3rem;
+    font-weight: 600;
+  }
+  #hero-right > div > a {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    margin: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  #hero-right {
+    font-size: 2rem;
+    width: 50%;
+    font-weight: 500;
+  }
+}
 #search {
   padding: 0 10rem;
 }
@@ -43,7 +59,8 @@
   border-radius: 5rem;
 }
 
-#search-div > div > input {
+#search-div > div > input,
+#search-div > div > select {
   padding: 1rem;
   background-color: #212121;
   outline: none;
@@ -68,24 +85,51 @@
 #search-div > button :hover {
   cursor: pointer;
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+  #search {
+    padding: 0 5rem;
+  }
+  #search-div > button {
+    padding: 0 1rem;
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 767px) {
+  #search {
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 2rem;
+  }
+  #search-div {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  #blogs {
+    padding: 1rem 5rem;
+  }
+}
 
 #subscribe {
-  font-size: 4rem;
+  font-size: 3rem;
   color: #742ad3;
-}
-
-#subscribe {
   width: 100%;
-  padding: 8rem;
+  padding: 2rem 10rem;
+  width: 100%;
 }
 
-#subscribe > img {
-  max-width: 30rem;
+#sub-desc {
+  width: 60%;
+}
+#sub-img {
+  width: 40%;
+}
+#sub-img > img {
+  max-width: 100%;
+  max-height: 20rem;
 }
 
-#subscribe > div {
-  width: 50%;
-}
 #subscribe > div > div > input {
   background-color: #212121;
   outline: none;
@@ -93,12 +137,78 @@
   color: white;
   font-size: 2rem;
   border-bottom: 2px solid #742ad3;
-  width: 100%;
+  width: 80%;
+  padding: 1rem;
 }
-#subscribe > div > div > button {
+#subscribe > div > div > button,
+#form-btn {
   background-color: #742ad3;
   border: none;
   outline: none;
   color: white;
-  padding: 2rem 5rem;
+  padding: 1rem 4rem;
+  font-size: 2rem;
+  border-radius: 1rem;
+  width: 20%;
+}
+#form-btn {
+  width: 30%;
+}
+
+#subscribe > div > div > button:hover,
+#form-btn:hover {
+  cursor: pointer;
+  background-color: #8c3ff0;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #subscribe {
+    font-size: 2.5rem;
+    padding: 5rem;
+  }
+  #sub-desc {
+    width: 70%;
+  }
+  #sub-img {
+    width: 30%;
+  }
+  #subscribe > div > div > input {
+    width: 70%;
+  }
+  #subscribe > div > div > button,
+  #form-btn {
+    padding: 1rem 3rem;
+    font-size: 2rem;
+    width: 25%;
+  }
+  #form-btn {
+    width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  #subscribe {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+  }
+  #sub-desc {
+    width: 70%;
+  }
+  #sub-img {
+    width: 30%;
+  }
+  #subscribe > div > div > input {
+    width: 70%;
+  }
+    #subscribe > div > div > button,
+  #form-btn {
+    padding: 1rem 3rem;
+    font-size: 2rem;
+    width: 25%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  #contact-section {
+    padding: 1rem 5rem;
+  }
 }
