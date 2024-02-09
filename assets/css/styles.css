@@ -163,6 +163,9 @@ w-full {
   background-color: #212121;
   transition: all 300ms;
 }
+#download-btn > a {
+  color: #742ad3;
+}
 
 #download-btn:hover {
   border: 4px solid white;
@@ -176,13 +179,18 @@ w-full {
   background-color: #742ad3;
   transition: all 300ms;
 }
+#contact-btn > a {
+  color: #212121;
+}
 #contact-btn:hover {
   border: 4px solid white;
   color: white;
   background-color: #212121;
   cursor: pointer;
 }
-
+#contact-btn > a:hover {
+  color: white;
+}
 .highlighted {
   color: #742ad3;
   font-weight: 700;
@@ -433,6 +441,9 @@ w-full {
   margin: 2rem 0;
 }
 
+.blog-card:hover {
+}
+
 .blog-card > img {
   max-width: 100%;
 }
@@ -504,7 +515,7 @@ w-full {
   border-radius: 10px;
   width: 100%;
   outline: none;
-  color: #742ad3;
+  color: white;
   margin: 1rem 0;
 }
 #contact-info {
@@ -531,7 +542,7 @@ w-full {
   color: white;
   font-weight: 600;
 }
-@media (min-width: 601px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   #contact-form > div > label {
     color: #742ad3;
     font-size: 2.5rem;
