@@ -3,7 +3,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
-  padding: 2rem 5rem;
+  padding: 2rem 10rem;
   width: 100%;
 }
 
@@ -199,7 +199,7 @@
   #subscribe > div > div > input {
     width: 70%;
   }
-    #subscribe > div > div > button,
+  #subscribe > div > div > button,
   #form-btn {
     padding: 1rem 3rem;
     font-size: 2rem;

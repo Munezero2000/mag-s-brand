@@ -266,7 +266,7 @@ w-full {
 
 #education {
   width: 100%;
-  padding: 2rem 5rem;
+  padding: 2rem 10rem;
 }
 
 .education-card {
@@ -337,7 +337,7 @@ w-full {
 
 /* SKILLS */
 #skills {
-  padding: 0rem 5rem;
+  padding: 0rem 10rem;
 }
 
 .skill-card {
@@ -374,7 +374,7 @@ w-full {
 
 /* PORJECT SECTION */
 #projects {
-  padding: 2rem 5rem;
+  padding: 2rem 10rem;
 }
 .project-card {
   width: 24%;
@@ -457,6 +457,7 @@ w-full {
   #blogs > div {
     flex-wrap: wrap;
   }
+
   .blog-card {
     width: 48%;
   }
