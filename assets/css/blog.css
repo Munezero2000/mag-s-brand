@@ -7,7 +7,7 @@
 
 #blog-hero {
   color: white;
-
+  padding: 2rem 10rem;
   width: 100%;
 }
 
@@ -15,7 +15,6 @@
   font-size: 4rem;
   width: 50%;
   font-weight: 700;
-  padding: 3rem 6rem;
 }
 #hero-right > div :nth-child(2) {
   text-align: justify;
@@ -35,7 +34,7 @@
 }
 
 #search {
-  padding: 0 5rem;
+  padding: 0 10rem;
 }
 
 #search-div {
@@ -68,4 +67,38 @@
 
 #search-div > button :hover {
   cursor: pointer;
+}
+
+#subscribe {
+  font-size: 4rem;
+  color: #742ad3;
+}
+
+#subscribe {
+  width: 100%;
+  padding: 8rem;
+}
+
+#subscribe > img {
+  max-width: 30rem;
+}
+
+#subscribe > div {
+  width: 50%;
+}
+#subscribe > div > div > input {
+  background-color: #212121;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  border-bottom: 2px solid #742ad3;
+  width: 100%;
+}
+#subscribe > div > div > button {
+  background-color: #742ad3;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 2rem 5rem;
 }
