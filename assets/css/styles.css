@@ -173,6 +173,9 @@ w-full {
   color: #212121;
   cursor: pointer;
 }
+#download-btn > a:hover {
+  color: #212121;
+}
 #contact-btn {
   border: 4px solid #742ad3;
   color: #212121;
@@ -746,4 +749,107 @@ w-full {
     font-size: 2.5rem;
     padding: 1rem 4rem;
   }
+}
+
+/* Blog-content */
+#blog-section {
+  padding: 2rem 10rem;
+  color: white;
+  font-size: 2rem;
+}
+
+#blog-section > img {
+  width: 100%;
+  height: 40rem;
+  object-fit: cover;
+}
+#blog-section > div {
+  margin: 1rem 0;
+}
+
+.delighted {
+  color: rgb(150, 147, 147);
+}
+@media (min-width: 767px) and (max-width: 1023px) {
+  #blog-content {
+    padding: 2rem 5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  #blog-content {
+    padding: 2rem 2rem;
+  }
+}
+
+/* Comment-section */
+#comment-section {
+  padding: 1rem 10rem;
+}
+#comment-icon {
+  margin: 2rem;
+}
+
+#comment-icon > p {
+  color: #742ad3;
+  font-size: 2rem;
+}
+
+#comment {
+  width: 80%;
+}
+#comment-desc {
+  padding: 1rem;
+}
+#user-profile {
+  padding: 1rem;
+  width: auto;
+}
+#user-profile > img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+#comment {
+  width: 70%;
+}
+#comment-text {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 1rem;
+  outline: none;
+  color: white;
+  font-size: 1.5rem;
+  align-items: center;
+  background-color: #212121;
+  border-bottom: 2px solid #742ad3;
+  resize: none;
+}
+
+#comment-btn {
+  background-color: #742ad3;
+  color: white;
+  height: 20%;
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+#com-btn {
+  flex: 1;
+}
+#commented {
+  padding: 1rem 10rem;
+}
+#commentor-name {
+  font-size: 2rem;
+  color: white;
+}
+
+#commented-text {
+  margin: 1.5rem 0;
+  color: white;
+  font-size: 1.5rem;
 }
