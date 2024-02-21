@@ -47,12 +47,14 @@
         <div id="comment-icon" class="flex gap-4">
             <p><i class="fa-regular fa-heart"></i> Like</i></p>
             <p><i class="fa-solid fa-share"></i> Share</p>
+            <p id="comments-count"></p>
         </div>
         <div id="comment-desc" class="flex flex-center">
             <div id="user-profile" class="flex align-center">
                 <img class="" src="../assets/images/profile.jpg" alt="">
             </div>
-            <div id="comment" class="flex">
+            <div id="comment" class="flex flex-col">
+                <p style="font-size: 1.5rem;" id="feedback"></p>
                 <textarea placeholder="Enter your comment here ...." id="comment-text" type="text"></textarea>
             </div>
             <div id="com-btn">
@@ -60,7 +62,10 @@
                     <i class="fa-regular fa-paper-plane"></i></a>
             </div>
         </div>
-        <div id="commented" class="flex">
+        <div id="commented" class="flex flex-col">
+          
+        </div>
+        <!-- <div id="commented" class="flex">
             <div id="user-profile" class="flex align-center">
                 <img class="" src="../assets/images/profile.jpg" alt="">
             </div>
@@ -70,18 +75,7 @@
                 <p id="commented-text">Great article of anyone thinking of starting up
                     back end development with node js</p>
             </div>
-        </div>
-        <div id="commented" class="flex">
-            <div id="user-profile" class="flex align-center">
-                <img class="" src="../assets/images/profile.jpg" alt="">
-            </div>
-            <div>
-                <p id="commentor-name">Munezero Ange</p>
-                <p class="delighted">a few seconds ago</p>
-                <p id="commented-text">Great article of anyone thinking of starting up
-                    back end development with node js</p>
-            </div>
-        </div>
+        </div> -->
     </Section>
     <section id="blogs">
         <h1 class="color-primary text-xl" style="text-align: center;">Related Post</h1>
@@ -142,6 +136,8 @@
         </div>
 
     </section>
+    <script src="../assets/js/uuidv4.js"></script>
+    <script src="../assets/js/blog/blogfunctions.js"></script>
     <script src="../assets/js/blog/blog-details.js"></script>
 </body>
 

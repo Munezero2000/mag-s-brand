@@ -2,7 +2,7 @@ function displayBlogPosts() {
   const container = document.getElementById("blogs-m-cards");
   container.innerHTML = "";
 
-  const blogPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+  const blogPosts = getBlogPost();
 
   blogPosts.forEach((blogPost) => {
     const blogCardDiv = document.createElement("div");

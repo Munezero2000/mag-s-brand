@@ -28,7 +28,6 @@ signinBtn.addEventListener("click", (e) => {
   if (validateEmail(email.value) && validatePassword(password.value)) {
     message.textContent = "";
     const user = verifyCredentials(email.value, password.value);
-    console.log(user);
     if (user !== null) {
       message.textContent = "🚨Redirecting......";
       message.style.color = "green";

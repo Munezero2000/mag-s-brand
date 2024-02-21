@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -38,7 +38,7 @@
         <div id="search-div" class="flex">
             <div>
                 <i class="fa-solid fa-magnifying-glass fa-2x"></i>
-                <input placeholder="Enter a title to search" type="text">
+                <input id="search-input" placeholder="Enter a title to search" type="text">
             </div>
             <button>Search</button>
         </div>
@@ -66,89 +66,6 @@
     </section>
     <section id="blogs">
         <div id="blogs-card-container" class="flex space-between w-full flex-wrap">
-            <div class="blog-card flex flex-col">
-                <img src="https://images.unsplash.com/photo-1592609931095-54a2168ae893?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="node js image">
-                <div class="text-white">
-                    <p>November 24</p>
-                    <p>How to build a simple REST API in Node js</p>
-                    <p>Here is a step by step guide of building a simple REST API with node js and mongoose if you
-                        want
-                        to
-                        start with this
-                        amazing language</p>
-                </div>
-            </div>
-            <div class="blog-card flex flex-col">
-                <img src="https://images.unsplash.com/photo-1592609931095-54a2168ae893?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="node js image">
-                <div class="text-white">
-                    <p>November 24</p>
-                    <p>How to build a simple REST API in Node js</p>
-                    <p>Here is a step by step guide of building a simple REST API with node js and mongoose if you
-                        want
-                        to
-                        start with this
-                        amazing language</p>
-                </div>
-
-            </div>
-            <div class="blog-card flex flex-col">
-                <img src="https://images.unsplash.com/photo-1592609931095-54a2168ae893?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="node js image">
-                <div class="text-white">
-                    <p>November 24</p>
-                    <p>How to build a simple REST API in Node js</p>
-                    <p>Here is a step by step guide of building a simple REST API with node js and mongoose if you
-                        want
-                        to
-                        start with this
-                        amazing language</p>
-                </div>
-
-            </div>
-            <div class="blog-card flex flex-col">
-                <img src="https://images.unsplash.com/photo-1592609931095-54a2168ae893?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="node js image">
-                <div class="text-white">
-                    <p>November 24</p>
-                    <p>How to build a simple REST API in Node js</p>
-                    <p>Here is a step by step guide of building a simple REST API with node js and mongoose if you
-                        want
-                        to
-                        start with this
-                        amazing language</p>
-                </div>
-
-            </div>
-            <div class="blog-card flex flex-col">
-                <img src="https://images.unsplash.com/photo-1592609931095-54a2168ae893?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="node js image">
-                <div class="text-white">
-                    <p>November 24</p>
-                    <p>How to build a simple REST API in Node js</p>
-                    <p>Here is a step by step guide of building a simple REST API with node js and mongoose if you
-                        want
-                        to
-                        start with this
-                        amazing language</p>
-                </div>
-
-            </div>
-            <div class="blog-card flex flex-col">
-                <img src="https://images.unsplash.com/photo-1592609931095-54a2168ae893?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="node js image">
-                <div class="text-white">
-                    <p>November 24</p>
-                    <p>How to build a simple REST API in Node js</p>
-                    <p>Here is a step by step guide of building a simple REST API with node js and mongoose if you
-                        want
-                        to
-                        start with this
-                        amazing language</p>
-                </div>
-
-            </div>
         </div>
     </section>
     <section id="subscribe" class="flex">
@@ -159,7 +76,7 @@
                 </button></div>
         </div>
         <div id="sub-img" class="flex flex-end">
-            <img src="./assets/images/blogger.svg" alt="">
+            <img src="../assets/images/blogger.svg" alt="">
         </div>
 
     </section>
@@ -185,19 +102,19 @@
         </form>
         <div id="contact-info" class="flex flex-col space-between">
             <div class=" flex flex-center  gap-4">
-                <img src=" ./assets/images/phone.svg" alt="">
+                <img src=" ../assets/images/phone.svg" alt="">
                 <p>munezero05200@gmail.com</p>
             </div>
             <div class="flex flex-center gap-4">
-                <img src=" ./assets/images/phone.svg" alt="">
+                <img src=" ../assets/images/phone.svg" alt="">
                 <p>Kigali-Rwanda</p>
             </div>
             <div class="flex flex-center gap-4">
-                <img src=" ./assets/images/phone.svg" alt="">
+                <img src=" ../assets/images/phone.svg" alt="">
                 <p>+250783172388</p>
             </div>
             <div class="flex flex-center gap-4">
-                <img src=" ./assets/images/phone.svg" alt="">
+                <img src=" ../assets/images/phone.svg" alt="">
                 <p>P.O BOX 000 Kigali</p>
             </div>
             <div class=" social flex space-between flex-center" style="padding-left: 8rem;">
@@ -209,6 +126,8 @@
             </div>
         </div>
     </footer>
+    <script src="../assets/js/blog/blogfunctions.js"></script>
+    <script src="../assets/js/blog/blog.js"></script>
 </body>
 
 </html>
