@@ -23,20 +23,19 @@
             <div class="login-left">
                 <p>Hello friend...!!</p>
                 <p>Welcome back to our blog</p>
-                <p>Please Enter your details</p>
+                <p id="message" style="font-size: 1.5rem;">Please Enter your details</p>
                 <form action="">
                     <div class="form-element">
                         <label for="email">Email</label>
-                        <input type="email" placeholder="Enter your email">
+                        <input id="email" type="email" placeholder="Enter your email">
                     </div>
                     <div class="form-element">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="Enter your password">
+                        <input id="password" type="password" placeholder="Enter your password">
+                        <p id="pass-feeback"></p>
                         <div><a href="" style="color: white; font-size: 1.5rem;">forget password</a></div>
                     </div>
-
-
-                    <div class="flex space-around"><a href="" class="btn btn-primary">Sign in</a></div>
+                    <div id="signin-btn" class="flex space-around"><a href="" class="btn btn-primary">Sign in</a></div>
                 </form>
             </div>
             <div class="login-right flex align-center flex-col">
@@ -49,6 +48,9 @@
             </div>
         </div>
     </div>
+    <script src="./assets/js/uuidv4.js"></script>
+    <script src="./assets/js/auth/authFunction.js"></script>
+    <script src="./assets/js/auth/login.js"></script>
 </body>
 
 </html>

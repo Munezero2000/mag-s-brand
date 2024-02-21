@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <link rel="stylesheet" href="./assets/css/blog.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -23,9 +23,9 @@
         <img src="https://images.unsplash.com/photo-1592609931095-54a2168ae893?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="">
         <div>
-            <h2>How to build a simple REST API in Node JS</h2>
-            <p class="delighted">Written by me</p>
-            <p class="delighted">November 25 2024</p>
+            <h2 id="blog-title">How to build a simple REST API in Node JS</h2>
+            <p id="blog-author" class="delighted">Written by me</p>
+            <p id="blog-date" class="delighted">November 25 2024</p>
         </div>
         <p id="blog-content-details">Building a simple REST API in Node.js involves creating routes, handling HTTP
             requests, and interacting with
@@ -50,7 +50,7 @@
         </div>
         <div id="comment-desc" class="flex flex-center">
             <div id="user-profile" class="flex align-center">
-                <img class="" src="./assets/images/profile.jpg" alt="">
+                <img class="" src="../assets/images/profile.jpg" alt="">
             </div>
             <div id="comment" class="flex">
                 <textarea placeholder="Enter your comment here ...." id="comment-text" type="text"></textarea>
@@ -62,7 +62,7 @@
         </div>
         <div id="commented" class="flex">
             <div id="user-profile" class="flex align-center">
-                <img class="" src="./assets/images/profile.jpg" alt="">
+                <img class="" src="../assets/images/profile.jpg" alt="">
             </div>
             <div>
                 <p id="commentor-name">Munezero Ange</p>
@@ -73,7 +73,7 @@
         </div>
         <div id="commented" class="flex">
             <div id="user-profile" class="flex align-center">
-                <img class="" src="./assets/images/profile.jpg" alt="">
+                <img class="" src="../assets/images/profile.jpg" alt="">
             </div>
             <div>
                 <p id="commentor-name">Munezero Ange</p>
@@ -138,10 +138,11 @@
                 </button></div>
         </div>
         <div id="sub-img" class="flex flex-end">
-            <img src="./assets/images/blogger.svg" alt="">
+            <img src="../assets/images/blogger.svg" alt="">
         </div>
 
     </section>
+    <script src="../assets/js/blog/blog-details.js"></script>
 </body>
 
 </html>

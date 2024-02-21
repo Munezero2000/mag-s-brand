@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -17,21 +17,16 @@
 </head>
 
 <body>
-    <div id="dashboard-container">
-        <div>
-            <div class="">
-                <i class="fa-solid fa-circle-plus"></i>
-                <p>Create a new blog</p>
+    <div style="width:100%; height:100vh; justify-content: center;" class="flex item-center flex-center">
+        <div id="delete-container" class="flex flex-col">
+            <p>Are you sure you want to delete this blog ?</p>
+            <p></p>
+            <div class="flex flex-center space-around">
+                <button id="blog-delete-btn">Delete</button><button id="cancel-delete-btn">Cancel</button>
             </div>
-            <div>
-                <i class="fa-solid fa-circle-plus"></i>
-                <p>Create a new blog</p>
-            </div>
-        </div>
-        <div>
-
         </div>
     </div>
+    <script src="../assets/js/blog/delete-blog.js"></script>
 </body>
 
 </html>

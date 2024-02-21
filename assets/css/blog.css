@@ -71,7 +71,7 @@
 
 #search-div > div {
   border: 2px solid #742ad3;
-  padding: 0.5rem;
+  padding: 0 2rem;
 }
 
 #search-div > button {

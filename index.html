@@ -18,12 +18,12 @@
 
 <body>
     <div class="container">
-        <!-- NOT YET DONE -->
-        <header></header>
-        <!-- HERO SECTION -->
         <div class="hero flex ">
-            <div class="hero-left flex flex-col space-between">
-                <p>Munezero <br> Ange Gabriel</p>
+            <div class="hero-left flex flex-col flex-end">
+                <div id="nav" class="flex space-between item-center">
+                    <p>Munezero <br> Ange Gabriel</p>
+                    <i id="menu-icon" class=" fa-solid fa-bars fa-2x"></i>
+                </div>
                 <img src="./assets/images/profile.jpg" alt="">
                 <div id="hero-icon" class=" social flex space-between flex-center">
                     <a href="https://fontawesome.com/"><i class="fa-brands fa-twitter icon fa-3x"></i></a>
@@ -208,22 +208,24 @@
         </section>
         <h1 class="color-primary text-xl" style="text-align: center;">Contact me</h1>
         <footer class="flex w-full" id="contact-section">
-            <form action="" id="contact-form">
+            <form action="" id="contact-form" >
+                <p style="padding: 1rem; border-radius: 5px;  font-size: 1.5rem; background-color: white; display: none;" id="feedback"></p>
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" placeholder="Munezero Ange">
+                    <input id="feedback-name" type="text" required placeholder="Munezero Ange">
                 </div>
                 <div>
                     <label for=" name">Email</label>
-                    <input type="email" placeholder="munezero123@gmail.com">
+                    <input  id="feedback-email" type="email" required placeholder="munezero123@gmail.com">
                 </div>
                 <div>
                     <label for="name">Message</label>
-                    <textarea style="resize: none;" name="" resizable="false" id="" cols="20" rows="10"
+                    <textarea
+                     id="feedback-message" style="resize: none;" name="" resizable="false" id="" cols="20" rows="10"
                         placeholder="Write your message here..."></textarea>
                 </div>
-                <div class="flex flex-end">
-                    <a href="./project.html" class="view-btn">Send
+                <div  class="flex flex-end">
+                    <a id="send-feedback-btn" href="" class="view-btn">Send
                         <i class="fa-regular fa-paper-plane"></i></a>
                 </div>
             </form>
@@ -254,6 +256,20 @@
             </div>
         </footer>
     </div>
+    <div id="nav-bar" class="flex item-center space-around">
+        <ul class="flex flex-col">
+            <div id="close-nav-item"><i class="fa-solid fa-xmark"></i></div>
+            <li><a href="./index.html" class="nav-icon"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="#" class="nav-icon"><i class="fa-solid fa-address-card"></i> About me</a></li>
+            <li><a class="nav-icon"><i class="fa-solid fa-kitchen-set"></i> Skills</a></li>
+            <li><a class="nav-icon"><i class="fa-solid fa-briefcase"></i> Projects</a></li>
+            <li><a class="nav-icon"><i class="fa-solid fa-blog"></i> Blogs</a></li>
+            <li><a class="nav-icon"><i class="fa-solid fa-address-book"></i> Contact me</a></li>
+            <li><a href="./login.html" class="nav-icon"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>
+        </ul>
+    </div>
+    <script src="./assets/js/uuidv4.js"></script>
+    <script src="./assets/js/index.js"></script>
 </body>
 
 </html>

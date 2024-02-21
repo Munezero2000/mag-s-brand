@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./assets/css/blog.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
     <title>Mag-s-brand</title>
 </head>
 
@@ -27,8 +27,8 @@
             <div class="flex space-around">
                 <a href="./register.html" style="text-align: right;">Register today
                     <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="./index.html" style="text-align: right; background-color: black;">My Portfolio
-                    </a>
+                <a href="../index.html" style="text-align: right; background-color: black;">My Portfolio
+                </a>
             </div>
 
         </div>
@@ -47,17 +47,25 @@
                 <i class="fa-solid fa-filter fa-2x"></i>
                 <Select>
                     <option disabled selected value="">Filter by</option>
-                    <option value="">Machine Learning</option>
-                    <option value="">Back-End Development</option>
-                    <option value="">Front-End Development</option>
-                    <option value="">Internet of Things</option>
+                    <optgroup label="Category">
+                        <option value="">Machine Learning</option>
+                        <option value="">Back-End Development</option>
+                        <option value="">Front-End Development</option>
+                        <option value="">Internet of Things</option>
+                    </optgroup>
+                    <optgroup label="Date posted">
+                        <option value="">2024</option>
+                        <option value="">2023</option>
+                        <option value="">2022</option>
+                    </optgroup>
+
                 </Select>
             </div>
 
         </div>
     </section>
     <section id="blogs">
-        <div class="flex space-between w-full flex-wrap">
+        <div id="blogs-card-container" class="flex space-between w-full flex-wrap">
             <div class="blog-card flex flex-col">
                 <img src="https://images.unsplash.com/photo-1592609931095-54a2168ae893?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="node js image">
@@ -70,7 +78,6 @@
                         start with this
                         amazing language</p>
                 </div>
-
             </div>
             <div class="blog-card flex flex-col">
                 <img src="https://images.unsplash.com/photo-1592609931095-54a2168ae893?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Mag-s-brand</title>
+</head>
+
+<body>
+    <div id="dashboard" class="flex">
+        <aside id="dash-nav">
+            <ul class="flex flex-col item-center">
+                <li class="flex flex-center flex-col">
+                    <img src="../assets/images/profile.jpg" alt="">
+                    <div>
+                        <p style="text-align: center;">Munezero Ange</p>
+                        <p class="highlighted" style="text-align: center; font-size: 1.5rem;">Admin</p>
+                    </div>
+
+                </li>
+                <li class="flex flex-center gap-4 item-center">
+                    <a href=""><i class="fa-solid fa-circle-plus"></i> Write a blog</a></i>
+                </li>
+                <li class="flex flex-center gap-4">
+                    <a href=""><i class="fa-solid fa-blog"></i></i> Blogs</a></i>
+                </li>
+                <li class="flex  flex-center gap-4">
+                    <a href=""><i class="fa-solid fa-users"></i></i> Users</a></i>
+                </li>
+                <li class="flex  flex-center gap-4">
+                    <a href=""><i class="fa-solid fa-gear"></i> Feedbacks</a></i>
+                </li>
+                <li class="flex  flex-center gap-4">
+                    <a href=""><i class="fa-solid fa-gear"></i>  Settings</a></i>
+                </li>
+                <li class="flex  flex-center gap-4">
+                    <a href=""><i class="fa-solid fa-right-from-bracket"></i>Logout</a></i>
+                </li>
+            </ul>
+        </aside>
+        <form id="dash-content" class="flex flex-col">
+            <h1>Create a new blog here</h1>
+            <div class="flex flex-col">
+                <label style="display: block; font-size: 2rem; color: white; margin: 1rem;">Blog Thumbnail</label>
+                <input style="display: block; color: white;" required type="file" id="imageInput">
+            </div>
+            <div class="flex space-between gap-4">
+                <input id="blog-title" required type="text" placeholder="Enter a title here...">
+                <select name="" id="category">
+                    <option value="">Machine Learning</option>
+                    <option value="">Back-End Development</option>
+                    <option value="">Front-End Development</option>
+                    <option value="">Internet of Things</option>
+                </select>
+            </div>
+            
+            <textarea name="" id="blog-description" cols="30" rows="10"></textarea>
+            <input id="add-blog-btn" class="btn" type="submit" style=" display:block; margin-left: auto;"
+                value="Submit">
+        </form>
+    </div>
+    <script src="../assets/js/blog/blogfunctions.js"></script>
+    <script src="../assets/js/uuidv4.js"></script>
+    <script src="../tinymce/tinymce.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/blog/createBlog.js"></script>
+</body>
+
+</html>
