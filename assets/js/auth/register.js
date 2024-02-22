@@ -3,7 +3,9 @@ const email = document.querySelector("#s-email");
 const password = document.querySelector("#s-password");
 const message = document.querySelector("#message");
 const registerBtn = document.querySelector("#register-btn");
-
+document.addEventListener("DOMContentLoaded", ()=>{
+  endSession();
+})
 
 names.addEventListener("input", (e) => {
   if (names.value.trim().length < 3) {
@@ -38,6 +40,7 @@ registerBtn.addEventListener("click", (e) => {
     let feedback = registerUser(names.value, email.value, password.value);
     message.textContent = feedback;
     message.style.color = "green";
+    window.location.assign("../../login.html")
   } else {
     message.textContent = "🚨Invalid Information😒";
     message.style.color = "red";

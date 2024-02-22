@@ -3,7 +3,7 @@ const category = document.querySelector("#category");
 const content = document.querySelector("#blog-description");
 const addBlogBtn = document.querySelector("#add-blog-btn");
 const imageUploadInput = document.querySelector("#imageInput");
-
+checkAdminPrivilage();
 // Validatin
 title.addEventListener("input", (e) => {
   if (!validateTitle(e.target.value)) {

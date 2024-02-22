@@ -3,6 +3,9 @@ const password = document.querySelector("#password");
 const messgae = document.querySelector("#message");
 const signinBtn = document.querySelector("#signin-btn");
 const passMessage = document.querySelector("#pass-feeback");
+document.addEventListener("DOMContentLoaded", ()=>{
+  endSession();
+})
 
 email.addEventListener("input", (e) => {
   if (validateEmail(e.target.value)) {

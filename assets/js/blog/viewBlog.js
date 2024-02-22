@@ -1,3 +1,4 @@
+checkAdminPrivilage();
 function displayBlogPosts() {
   const container = document.getElementById("blogs-m-cards");
   container.innerHTML = "";

@@ -212,3 +212,22 @@
     padding: 1rem 5rem;
   }
 }
+
+#navigation{
+  padding: 2rem 10rem;
+  color: white;
+  /* position: fixed; */
+}
+#navigation > ul{
+  list-style: none;
+}
+#navigation > ul > li> a{
+  font-size: 2rem;
+  color: white;
+}
+#navigation > ul > li:hover{
+  cursor: pointer;
+}
+#signed-user{
+  font-size: 2rem;
+}

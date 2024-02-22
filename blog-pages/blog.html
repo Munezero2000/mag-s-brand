@@ -18,17 +18,27 @@
 </head>
 
 <body>
-    <section id="blog-hero" class="flex">
+ 
+    <section id="blog-hero" class="flex flex-col">
+        <nav style="padding: 2rem 0;" id="navigation" class="flex space-between">
+            <div id="signed-user">
+                
+            </div>
+            <ul class="flex gap-4 flex-end">
+                <li><a href="./blog.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li ><a href="../index.html"><i class="fa-solid fa-briefcase"></i> Portfolio</a></li>
+                <li id="dashboard-link"><a href="/blog-pages/dash-view-blog.html"><i class="fa-solid fa-screwdriver-wrench"></i> Dashboard</a></li>
+                <li id="logout"></li>
+            </ul>
+        </nav>
         <div id="hero-right">
             <p style="text-align: center;">My <span class="highlighted">Personal</span> Blog</p>
             <p>Explore my papers here and start <span class="highlighted">knowledge sharing</span> today with me.</p>
             <p>It's all about</p>
             <p class="highlighted" style="text-align: right;">Technology</p>
             <div class="flex space-around">
-                <a href="./register.html" style="text-align: right;">Register today
+                <a id="register-call" href="./register.html" style="text-align: right;">Register today
                     <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="../index.html" style="text-align: right; background-color: black;">My Portfolio
-                </a>
             </div>
 
         </div>

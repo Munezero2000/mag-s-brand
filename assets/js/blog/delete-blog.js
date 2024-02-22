@@ -1,3 +1,4 @@
+checkAdminPrivilage();
 document.addEventListener("DOMContentLoaded", function() {
     const url = location.hash;
     const blogId = url.slice(1);

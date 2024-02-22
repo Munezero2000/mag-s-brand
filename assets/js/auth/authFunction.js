@@ -11,9 +11,9 @@ function validatePassword(password) {
 }
 
 function validateName(name) {
-  // Name should contain at least two words separated by a space
-  const nameRegex = /^[\w]+[\s][\w]+$/;
-  return nameRegex.test(name);
+  if(name.length > 3){
+    return name;
+  }
 }
 
 function saveUserToLocalStorage(user) {
@@ -47,6 +47,10 @@ function ManageSession(user) {
   const sessionId = uuidv4();
   sessionStorage.setItem("sessionId", sessionId);
   sessionStorage.setItem("currentUser", JSON.stringify(user));
+}
+function endSession() {
+  sessionStorage.removeItem("sessionId");
+  sessionStorage.removeItem("currentUser");
 }
 
 function verifyCredentials(email, password) {

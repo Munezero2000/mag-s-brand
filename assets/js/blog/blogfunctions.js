@@ -70,14 +70,16 @@ function createCard(data) {
 
 //a function to get a signed in user
 function getAuthenticatedUser(){
-  return sessionStorage.getItem("currentUser") || null;
+  return JSON.parse(sessionStorage.getItem("currentUser")) || null;
 }
 
 //get comment from local storage
 function getCommentFromLocalStorage(){
   return JSON.parse(localStorage.getItem("blogComments")) || [];
 }
-
+function getLikesFromLocalStorage(){
+  return JSON.parse(localStorage.getItem("blogLikes")) || [];
+}
 // function to add a new comment 
 function addCommentToLocalStorage( userId, blogId, commentText){
   const comment = {
@@ -92,6 +94,46 @@ function addCommentToLocalStorage( userId, blogId, commentText){
   localStorage.setItem("blogComments", JSON.stringify(blogComments))
   return "comment Added";
 }
+
+function addLikeToLocalStorage(userId, blogId) {
+  const like = {
+    user: userId,
+    blog: blogId,
+    likedOn: new Date()
+  };
+  const blogLikes = getLikesFromLocalStorage();
+  blogLikes.push(like);
+  localStorage.setItem("blogLikes", JSON.stringify(blogLikes));
+  return "Like added";
+}
+
+function deleteLikeFromLocalStorage(userId, blogId) {
+  const blogLikes = getLikesFromLocalStorage();
+  const index = blogLikes.findIndex(like => like.user === userId && like.blog === blogId);
+  
+  if (index !== -1) {
+    blogLikes.splice(index, 1);
+    localStorage.setItem("blogLikes", JSON.stringify(blogLikes));
+    return "Like deleted";
+  } else {
+    return "Like not found";
+  }
+}
+
+
+function deleteCommentFromLocalStorage(commentId) {
+  const blogComments = getCommentFromLocalStorage();
+  const index = blogComments.findIndex(comment => comment.id === commentId);
+  
+  if (index !== -1) {
+    blogComments.splice(index, 1);
+    localStorage.setItem("blogComments", JSON.stringify(blogComments));
+    return "Comment deleted";
+  } else {
+    return "Comment not found";
+  }
+}
+
 
 function getAllUser(){
   return JSON.parse(localStorage.getItem("users")) || [];
@@ -108,4 +150,21 @@ function findCommentsById(id){
   return comments.filter((comment)=>{
     return comment.blog == id;
   }) || []
+}
+
+function endSession() {
+  sessionStorage.removeItem("sessionId");
+  sessionStorage.removeItem("currentUser");
+}
+
+function checkAdminPrivilage(){
+const authenticatedUser = getAuthenticatedUser();
+document.addEventListener("DOMContentLoaded", (e)=>{
+  if(authenticatedUser && authenticatedUser.role !== "admin"){
+    endSession();
+    window.location.assign("../../login.html")
+  }else if(!authenticatedUser){
+    window.location.assign("../../login.html")
+  }
+})
 }
