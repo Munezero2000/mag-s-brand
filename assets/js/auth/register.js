@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 names.addEventListener("input", (e) => {
   if (names.value.trim().length < 3) {
-    names.style.border = "2px solid #742ad3";
-  } else {
     names.style.border = "2px solid darkred";
+  } else {
+    names.style.border = "2px solid #742ad3";
   }
 });
 

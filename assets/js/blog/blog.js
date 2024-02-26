@@ -4,6 +4,7 @@ const signedUser = document.getElementById("signed-user");
 const registerBtn = document.getElementById("register-call")
 const dashboard = document.getElementById("dashboard-link")
 
+
 let filter = '';
 
 const authenticatedUser = getAuthenticatedUser();

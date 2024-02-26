@@ -21,11 +21,11 @@
 <body>
     <nav id="navigation" class="flex space-between">
         <div id="signed-user">
-            
+
         </div>
         <ul class="flex gap-4 flex-end">
             <li><a href="./blog.html"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li ><a href="../index.html"><i class="fa-solid fa-briefcase"></i> Portfolio</a></li>
+            <li><a href="../index.html"><i class="fa-solid fa-briefcase"></i> Portfolio</a></li>
             <li id="logout"></li>
         </ul>
     </nav>
@@ -55,7 +55,8 @@
     </section>
     <Section id="comment-section" class="flex flex-col">
         <div id="comment-icon" class="flex gap-4">
-            <p id="like-btn"><i id="like-icon" class="fa-regular fa-heart"></i><span style="margin-left: 1rem;" id="like-count">Like</span></i></p>
+            <p id="like-btn"><i id="like-icon" class="fa-regular fa-heart"></i><span style="margin-left: 1rem;"
+                    id="like-count">Like</span></i></p>
             <p><i class="fa-solid fa-share"></i> Share</p>
             <p id="comments-count"></p>
         </div>
@@ -73,7 +74,7 @@
             </div>
         </div>
         <div id="commented" class="flex flex-col">
-          
+
         </div>
         <!-- <div id="commented" class="flex">
             <div id="user-profile" class="flex align-center">
@@ -136,8 +137,10 @@
     </section> -->
     <section id="subscribe" class="flex">
         <div id="sub-desc">
+            <p id="sub-feedback" style="font-size: 1.5rem; color: green; width: 70%;"></p>
             <p>Subsribe to my newsletter so you won't miss any updates</p>
-            <div class="flex"><input type="text" placeholder="Enter your email"><button class="flex space-between">
+            <div class="flex"><input id="subscribe-input" type="text" placeholder="Enter your email">
+                <button id="subscribe-btn"  class="flex space-between">
                     <p>Send</p> <i class="fa-solid fa-paper-plane"></i>
                 </button></div>
         </div>

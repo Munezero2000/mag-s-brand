@@ -511,7 +511,7 @@ html {
 .blog-card {
   width: 30%;
   background-color: #6231a2;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   overflow: hidden;
   margin: 2rem 0;
   transition: all 200ms ease-out;
@@ -524,6 +524,7 @@ html {
 
 .blog-card > img {
   max-width: 100%;
+  height: 200px;
   object-fit: cover;
 }
 .blog-card > div {
@@ -960,6 +961,9 @@ html {
 #dash-nav > ul > li > a:hover {
   background-color: #742ad3;
 }
+#dash-nav > ul > li > a:active {
+  background-color: #742ad3;
+}
 #dash-content {
   background-color: #742ad3;
   width: 80%;
@@ -1071,4 +1075,74 @@ html {
 }
 #cancel-delete-btn {
   background-color: darkgreen;
+}
+#user-info{
+  color: white;
+  width: 100%;
+}
+.user-info-card{
+  background: rgb(2,0,36);
+background: linear-gradient(351deg, rgba(2,0,36,1) 0%, rgba(116,42,211,1) 35%, rgba(0,212,255,1) 100%);
+  margin: 1rem 2rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+/* .user-info-card:hover{
+  cursor: pointer;
+} */
+.user-info-icon{
+  padding: 1rem;
+  gap: 15rem;
+}
+.user-info-icon > i {
+  display: block;
+  font-size: 2rem;
+}
+
+.info{
+  padding: 1rem;
+  font-size: 2rem;
+}
+#all-users{
+  font-weight: 700;
+}
+#user-table{
+  border-collapse: collapse;
+  margin: 1rem 2rem;
+
+}
+tr.user-information{
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #6231a2;
+}
+
+.user-information> td {
+  /* display: flex; */
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #6231a2;
+}
+
+.action{
+  /* display: flex; */
+  color: white;
+  background-color: #6231a2;
+  border-bottom: 1px solid white;
+}
+.action >button {
+  background-color: #6231a2;
+  outline: none;
+  padding: 0 1.5rem;
+  border: none;
+}
+.action >button > i {
+  font-size: 1.8rem;
+  color: white;
+  transition: all 300ms;
+}
+.action >button > i:hover{
+  cursor: pointer;
+  box-shadow: 0 0 10px white;
 }

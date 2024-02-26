@@ -7,6 +7,10 @@ const likeBtn = document.getElementById("like-icon");
 const likeCount = document.getElementById("like-count");
 const signedUser = document.getElementById("signed-user");
 const logout = document.getElementById("logout");
+const subscribe= document.getElementById("subscribe-input")
+const subscribeBtn = document.getElementById("subscribe-btn")
+const subFeedback = document.getElementById("sub-feedback");
+const subscribeSection = document.getElementById("subscribe")
 
 // getting the if from the hash
 const url = location.hash
@@ -23,9 +27,11 @@ document.addEventListener("DOMContentLoaded", function() {
     location
 
     if(authenticatedUser !== null){
+        subscribeSection.style.display = "none";
         signedUser.textContent=`Signed in as: ${authenticatedUser.email}`
         logout.innerHTML='<a ><i class="fa-solid fa-right-from-bracket"></i> Logout</a>'
     }else{
+        subscribeSection.style.display = "flex";
         signedUser.textContent = "Register today😊"
         logout.innerHTML = '<a href="../../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
     }
@@ -54,6 +60,38 @@ document.addEventListener("DOMContentLoaded", function() {
         blogSection.innerHTML = "<p>No blog posts available</p>";
     }
 });
+
+subscribeBtn.addEventListener('click', (e) => {
+    subFeedback.style.transition = "all 300ms ease-in-out";
+    if (validateEmail(subscribe.value)) {
+        subFeedback.style.display = "block";
+        subFeedback.style.backgroundColor = "white";
+        subFeedback.style.padding = "1rem";
+        subFeedback.style.borderRadius = "0.5rem";
+        subFeedback.textContent = addSubscriberEmailToLocalStorage(subscribe.value);
+
+        setTimeout(() => {
+            subFeedback.textContent = "";
+            subFeedback.style.display = "none";
+            subFeedback.style.transition = "all 300ms ease-in-out";
+        }, 3000);
+    } else {
+        subFeedback.style.display = "block";
+        subFeedback.style.backgroundColor = "white";
+        subFeedback.style.padding = "1rem";
+        subFeedback.style.borderRadius = "0.5rem";
+        subFeedback.style.color = "darkred";
+        subFeedback.innerHTML = "Invalid email";
+
+        setTimeout(() => {
+            subFeedback.textContent = "";
+            subFeedback.style.display = "none";
+            subFeedback.style.transition = "all 300ms ease-in-out";
+        }, 3000);
+    }
+})
+
+
 
 // add Comment when the button is clicked
 commentBtn.addEventListener('click', (e)=>{
@@ -181,6 +219,7 @@ function checkLikeStatus(){
     })
     likeCount.textContent = `${blogLikes.length} likes`
 }
+
 
 logout.addEventListener('click', (e)=>{
     endSession();

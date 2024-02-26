@@ -119,6 +119,17 @@ function deleteLikeFromLocalStorage(userId, blogId) {
     return "Like not found";
   }
 }
+function deleteUserFromLocalStorage(id) {
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const userIndex = users.findIndex((user) => user.id === id);
+  if (userIndex !== -1) {
+      users.splice(userIndex, 1); // Remove the user from the array
+      localStorage.setItem("users", JSON.stringify(users)); // Update localStorage
+      return "User deleted successfully";
+  } else {
+      return "User not found";
+  }
+}
 
 
 function deleteCommentFromLocalStorage(commentId) {
@@ -167,4 +178,22 @@ document.addEventListener("DOMContentLoaded", (e)=>{
     window.location.assign("../../login.html")
   }
 })
+}
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function addSubscriberEmailToLocalStorage(email) {
+  const subscribers = JSON.parse(localStorage.getItem("subscribers")) || [];
+  const existingSubscriberIndex = subscribers.findIndex(subscriber => subscriber.email === email);
+  
+  if (existingSubscriberIndex === -1) {
+    subscribers.push({ email: email });
+    
+    localStorage.setItem("subscribers", JSON.stringify(subscribers));
+     return "Subscriber added successfully: "+ email;
+  } else {
+      return "Subscriber already exists:"+ email;
+  }
 }
