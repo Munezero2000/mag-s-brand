@@ -162,6 +162,9 @@ html {
   #nav-bar > ul {
     padding: 4rem 0 0 0;
   }
+  .text-xl{
+    font-size: 3.5rem;
+  }
 }
 .hero-left {
   background-color: #742ad3;
@@ -861,6 +864,11 @@ html {
     height: auto;
     padding: 2rem;
   }
+  #contact-form {
+    width: 100%;
+    border-top: 0.3rem solid #742ad3;
+    padding: 2rem 0;
+  }
   #login-container {
     flex-direction: column;
     width: 90%;
@@ -871,6 +879,10 @@ html {
 
   .login-left > p {
     font-size: 2rem;
+  }
+
+  .space-y-4{
+    margin: 1rem;
   }
 
   .login-right {
