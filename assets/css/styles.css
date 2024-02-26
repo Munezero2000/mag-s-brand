@@ -224,7 +224,7 @@ html {
 }
 #download-btn, 
 #contact-btn{
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   border: 0.3rem solid #742ad3;
   font-size: 2.5rem;
   padding: 0.8rem 2rem;
@@ -267,10 +267,14 @@ html {
     height: 100rem;
   }
   #nav {
-    top: 5%;
-    left: 5%;
-    width: 90%;
+    position: fixed;
+    top: 0%;
+    padding:1rem 5rem;
+    left: 0%;
+    z-index: 999;
+    width: 100%;
     color: white;
+    background-color: #742ad3;
     font-size: 3rem;
   }
   .hero-left {
@@ -310,11 +314,15 @@ html {
     height: 20%;
   }
   #nav {
-    top: 8%;
-    left: 5%;
-    width: 90%;
+    position: fixed;
+    background-color: #742ad3;
+    top: 0%;
+    padding:1rem 1.8rem;
+    left: 0%;
+    z-index: 999;
+    width: 100%;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   #menu-icon{
     color: #212121;
@@ -359,10 +367,7 @@ html {
     font-size: 1.5rem;
     font-weight: 500;
   }
-  #contact-btn,
-  #download-btn{
 
-  }
   #download-btn{
     border: 0.3rem solid white;
     background-color: white;
@@ -495,7 +500,7 @@ html {
     padding: 0rem 2rem;
   }
   .skill-card {
-    min-width: 45%;
+    width: 45%;
   }
   .skill-card > img {
     max-width: 8rem;
