@@ -482,7 +482,7 @@ html {
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   .skill-card {
-    min-width: 30%;
+    min-width: 40%;
   }
 }
 
@@ -492,6 +492,12 @@ html {
   }
   .skill-card {
     min-width: 45%;
+  }
+  .skill-card > img {
+    max-width: 8rem;
+    max-height: 8rem;
+    margin: 2rem 0;
+    object-fit: cover;
   }
 }
 
