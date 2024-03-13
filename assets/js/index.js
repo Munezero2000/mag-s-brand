@@ -1,3 +1,5 @@
+import MessageServices from "./service/MessgeServices.js";
+
 const menu = document.querySelector("#nav-bar");
 const container = document.querySelector(".container");
 document.querySelector("#close-nav-item").addEventListener("click", (e) => {
@@ -16,31 +18,32 @@ const message = document.querySelector("#feedback-message")
 const feedback = document.querySelector("#feedback")
 const feedbackBtn = document.querySelector("#send-feedback-btn")
 
-feedbackBtn.addEventListener("click", (e)=>{
+feedbackBtn.addEventListener("click", async (e) => {
   e.preventDefault();
-  if(!name.value || !email.value || message.value.length < 10){
+  if (!name.value || !email.value || message.value.length < 10) {
     const not = "The name is required. <br> A valid email is required. <br> the Message is required and must be 10 character or more... "
     displayNotification("darkred", not, 5000)
-  }else{
-    const feedbackObj = {
-      name:name.value,
-      email: email.value,
-      message: message.value
+  } else {
+    const feedback = {
+      name: name.value,
+      senderEmail: email.value,
+      content: message.value
     }
-    saveFeedback(feedbackObj)
-    displayNotification("darkgreen", "Message sent succefully", 5000)
-    name.value ="";
-    email.value= "";
+    const response = await MessageServices.sendMessage(feedback);
+    const data = await response.json();
+    console.log(data)
+    if (response.status === 201) {
+      displayNotification("darkgreen", data.message, 5000);
+    } else {
+      displayNotification("darkred", data.message, 5000);
+    }
+    name.value = "";
+    email.value = "";
     message.value = "";
   }
 
 })
 
-const saveFeedback= (feedback)=>{
-  const feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || []
-  feedbacks.push(feedback)
-  localStorage.setItem("feedbacks", JSON.stringify(feedbacks))
-}
 
 function displayNotification(color, message, delay) {
   feedback.style.display = "block";

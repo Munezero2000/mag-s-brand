@@ -1,4 +1,7 @@
-const commentBox = document.querySelector("#comment-text"); 
+import UserServive from "../service/userServices.js";
+import BlogService from "../service/blogServices.js";
+
+const commentBox = document.querySelector("#comment-text");
 const feedback = document.querySelector("#feedback");
 const commentBtn = document.querySelector("#comment-btn");
 const commentCount = document.querySelector("#comments-count")
@@ -7,57 +10,55 @@ const likeBtn = document.getElementById("like-icon");
 const likeCount = document.getElementById("like-count");
 const signedUser = document.getElementById("signed-user");
 const logout = document.getElementById("logout");
-const subscribe= document.getElementById("subscribe-input")
+const subscribe = document.getElementById("subscribe-input")
 const subscribeBtn = document.getElementById("subscribe-btn")
 const subFeedback = document.getElementById("sub-feedback");
 const subscribeSection = document.getElementById("subscribe")
+const blogSection = document.querySelector("#blog-section");
 
-// getting the if from the hash
+// getting the # from a Blog ID
 const url = location.hash
 const blogId = url.slice(1);
-if(!blogId){
+if (!blogId) {
     window.location.assign("../../blog-pages/blog.html");
 }
-const authenticatedUser = getAuthenticatedUser();
-// fill the page with the blog content dynamically
-document.addEventListener("DOMContentLoaded", function() {
-    const blogPostsData = localStorage.getItem("blogPosts");
-    const blogPosts = JSON.parse(blogPostsData);
-    const blogSection = document.querySelector("#blog-section");
-    location
 
-    if(authenticatedUser !== null){
+const authenticatedUser = UserServive.getAuthenticatedUser();
+
+// fill the page with the blog content dynamically
+document.addEventListener("DOMContentLoaded", async () => {
+    const data = await BlogService.getAllBlogById(blogId);
+    const blog = await data.json();
+
+    // Check authentication status
+    if (authenticatedUser !== null) {
         subscribeSection.style.display = "none";
-        signedUser.textContent=`Signed in as: ${authenticatedUser.email}`
-        logout.innerHTML='<a ><i class="fa-solid fa-right-from-bracket"></i> Logout</a>'
-    }else{
+        signedUser.textContent = `Signed in as: ${authenticatedUser.email}`
+        logout.innerHTML = '<a ><i class="fa-solid fa-right-from-bracket"></i> Logout</a>'
+    } else {
         subscribeSection.style.display = "flex";
         signedUser.textContent = "Register today😊"
         logout.innerHTML = '<a href="../../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
     }
-    if (blogPosts && blogPosts.length > 0) {
-        const foundPost = blogPosts.find(post => post.id === blogId);
-        if (foundPost) {
-            const image = blogSection.querySelector("img");
-            const title = blogSection.querySelector("#blog-title");
-            const author = blogSection.querySelector("#blog-author");
-            const date = blogSection.querySelector("#blog-date");
-            const content = blogSection.querySelector("#blog-content-details");
 
-            image.src = `../assets/images/${foundPost.blogthumbnail}`;
-            title.textContent = foundPost.title;
-            author.textContent = `Written by ${foundPost.author}`;
-            const dateCreated = foundPost.dateCreated; 
-            const parsedDate = new Date(dateCreated);
-            const formattedDate = parsedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
-            date.textContent = formattedDate;
-            content.innerHTML = foundPost.content;
-            // checkLikeStatus();
-        } else {
-            blogSection.innerHTML = "<p>Blog post not found</p>";
-        }
+    // Render blog content in details 
+    if (blog) {
+        const image = blogSection.querySelector("img");
+        const title = blogSection.querySelector("#blog-title");
+        const author = blogSection.querySelector("#blog-author");
+        const date = blogSection.querySelector("#blog-date");
+        const content = blogSection.querySelector("#blog-content-details");
+
+        image.src = `http://localhost:4000/uploads/${blog.thumbnail}`;
+        title.textContent = blog.title;
+        author.textContent = `Written by ${blog.author.username}`;
+        const dateCreated = blog.createdAt;
+        const parsedDate = new Date(dateCreated);
+        const formattedDate = parsedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+        date.textContent = formattedDate;
+        content.innerHTML = blog.content;
     } else {
-        blogSection.innerHTML = "<p>No blog posts available</p>";
+        blogSection.innerHTML = "<p>Blog post not found</p>";
     }
 });
 
@@ -94,16 +95,16 @@ subscribeBtn.addEventListener('click', (e) => {
 
 
 // add Comment when the button is clicked
-commentBtn.addEventListener('click', (e)=>{
+commentBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const user = getAuthenticatedUser();
-    if(user === null){
+    if (user === null) {
         window.location.assign("../../login.html")
-    }else{
-        if(commentBox.value.length < 10){
+    } else {
+        if (commentBox.value.length < 10) {
             feedback.textContent = "Comment must at least be 10 characters!";
             feedback.style.color = "red";
-        }else{
+        } else {
             feedback.style.color = "green"
             addCommentToLocalStorage(user.id, blogId, commentBox.value)
             window.location.reload();
@@ -134,11 +135,11 @@ blogComment.forEach(comment => {
     const commentorName = document.createElement("p");
     const user = findUserById(comment.user)
     commentorName.id = "commentor-name";
-    commentorName.textContent = user.name; 
+    commentorName.textContent = user.name;
 
     // Create time since commented element
     const timeSinceCommented = document.createElement("p");
-    timeSinceCommented.classList.add("delighted"); 
+    timeSinceCommented.classList.add("delighted");
     timeSinceCommented.textContent = calculateTimeSinceCommented(comment.commentedOn);
 
     userNameAndTime.appendChild(commentorName);
@@ -146,15 +147,15 @@ blogComment.forEach(comment => {
 
     const commentedText = document.createElement("p");
     commentedText.id = "commented-text";
-    commentedText.innerHTML = comment.comment ;
+    commentedText.innerHTML = comment.comment;
     userNameAndTime.appendChild(commentedText);
 
     const deleteButton = document.createElement("i");
     deleteButton.classList.add("fas", "fa-trash-can");
-    deleteButton.style.color ="white"
+    deleteButton.style.color = "white"
     deleteButton.style.cursor = "pointer";
     userNameAndTime.appendChild(deleteButton);
-   
+
 
     const authenticatedUser = getAuthenticatedUser();
     if (authenticatedUser && authenticatedUser.id === comment.user) {
@@ -164,7 +165,7 @@ blogComment.forEach(comment => {
             window.location.reload();
         });
     } else {
-        deleteButton.style.display = "none"; 
+        deleteButton.style.display = "none";
     }
 
     // Create the main commented container
@@ -195,7 +196,7 @@ function calculateTimeSinceCommented(commentDate) {
 
 likeBtn.addEventListener('click', checkLikeStatus);
 
-function checkLikeStatus(){
+function checkLikeStatus() {
     const user = getAuthenticatedUser();
     const likes = getLikesFromLocalStorage();
     if (user === null) {
@@ -214,14 +215,14 @@ function checkLikeStatus(){
         }
 
     }
-    const blogLikes = likes.filter((like)=>{
+    const blogLikes = likes.filter((like) => {
         return like.blog == blogId
     })
     likeCount.textContent = `${blogLikes.length} likes`
 }
 
 
-logout.addEventListener('click', (e)=>{
+logout.addEventListener('click', (e) => {
     endSession();
     signedUser.textContent = "Register today😊";
     logout.innerHTML = '<a href="../../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';

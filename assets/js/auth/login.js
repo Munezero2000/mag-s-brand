@@ -1,13 +1,10 @@
+import UserServive from "../service/userServices.js";
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const messgae = document.querySelector("#message");
 const signinBtn = document.querySelector("#signin-btn");
 const passMessage = document.querySelector("#pass-feeback");
 
-
-document.addEventListener("DOMContentLoaded", ()=>{
-  endSession();
-})
 
 email.addEventListener("input", (e) => {
   if (validateEmail(e.target.value)) {
@@ -23,30 +20,35 @@ password.addEventListener("input", (e) => {
     passMessage.style.display = "none"
   } else {
     password.style.border = "2px solid darkred";
-    passMessage.innerHTML ="A valid Password must contain: <br> -Uppercase letter <br> -Lowercase letter <br> -Special character <br> -Numbers"
+    passMessage.innerHTML = "A valid Password must contain: <br> -Uppercase letter <br> -Lowercase letter <br> -Special character <br> -Numbers"
     passMessage.style.color = "red"
   }
 });
 
-signinBtn.addEventListener("click", (e) => {
+signinBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   if (validateEmail(email.value) && validatePassword(password.value)) {
+    const user = { email: email.value, password: password.value };
+    const response = await UserServive.authenticateUser(user);
+
     message.textContent = "";
-    const user = verifyCredentials(email.value, password.value);
-    if (user !== null) {
-      message.textContent = "🚨Redirecting......";
-      message.style.color = "green";
-      window.location.assign("../../blog-pages/blog.html");
+    const res = await response.json();
+    const token = response.headers.get("x-auth-token");
+    if (response.status===200) {
+      // Access the token from the response headers
+      if (token) {
+        localStorage.setItem("token", JSON.stringify(token));
+        localStorage.setItem("user", JSON.stringify(res));
+        message.textContent = "🚨Redirecting......";
+        message.style.color = "green";
+        window.location.assign("../../blog-pages/blog.html");
     } else {
-      message.textContent = "🚨Invalid Information😒";
+      message.textContent = "Invalid email and password";
       message.style.color = "red";
+      passMessage.innerHTML = "A valid Password must contain: <br> -Uppercase letter <br> -Lowercase letter <br> -Special character <br> -Numerical characters"
+      passMessage.style.color = "red"
+      email.style.border = "2px solid darkred";
+      password.style.border = "2px solid darkred";
     }
-  }else{
-    message.textContent = "Invalid email and password";
-    message.style.color = "red";
-    passMessage.innerHTML ="A valid Password must contain: <br> -Uppercase letter <br> -Lowercase letter <br> -Special character <br> -Numerical characters"
-    passMessage.style.color = "red"
-    email.style.border = "2px solid darkred";
-    password.style.border = "2px solid darkred";
   }
-});
+}});

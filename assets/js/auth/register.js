@@ -1,17 +1,16 @@
+import UserServive from "../service/userServices.js";
 const names = document.querySelector("#s-name");
 const email = document.querySelector("#s-email");
 const password = document.querySelector("#s-password");
 const message = document.querySelector("#message");
 const registerBtn = document.querySelector("#register-btn");
-document.addEventListener("DOMContentLoaded", ()=>{
-  endSession();
-})
+
 
 names.addEventListener("input", (e) => {
-  if (names.value.trim().length < 3) {
-    names.style.border = "2px solid darkred";
-  } else {
+  if (validateName(e.target.value)) {
     names.style.border = "2px solid #742ad3";
+  } else {
+    names.style.border = "2px solid darkred";
   }
 });
 
@@ -31,16 +30,38 @@ password.addEventListener("input", (e) => {
   }
 });
 
-registerBtn.addEventListener("click", (e) => {
+registerBtn.addEventListener("click", async (e) => {
   if (
     validateName(names.value) &&
     validateEmail(email.value) &&
     validatePassword(password.value)
   ) {
-    let feedback = registerUser(names.value, email.value, password.value);
-    message.textContent = feedback;
-    message.style.color = "green";
-    window.location.assign("../../login.html")
+    const user = {
+      username: names.value,
+      email: email.value,
+      password: password.value
+    }
+    try {
+      let response = await UserServive.registerUser(user);
+      if (response.status === 201) {
+        let feedback = await response.json();
+        console.log(feedback.message);
+        message.textContent = feedback.message;
+        setTimeout(() => {
+          window.location.href = "./login.html"
+        }, 2000);
+        message.style.color = "green";
+      } else {
+        let errorData = await response.json();
+        console.error("Registration failed:", errorData);
+        message.textContent = `🚨${errorData.message}`;
+        message.style.color = "red";
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
+      message.textContent = "🚨 Registration failed. Please try again later.";
+      message.style.color = "red";
+    }
   } else {
     message.textContent = "🚨Invalid Information😒";
     message.style.color = "red";

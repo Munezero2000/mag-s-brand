@@ -7,45 +7,20 @@ function validateContent(contentValue) {
   return contentValue.trim() !== "" && contentValue.length >= 100;
 }
 
-function addBlogPost(title, category, content, imageName) {
-  // Blog Post Object
-  const blogPost = {
-    id: uuidv4(),
-    title: title,
-    category: category,
-    content: content,
-    author: "me",
-    dateCreated: new Date().toISOString(),
-    blogthumbnail: imageName
-  };
-
-  let feedback = saveBlogPostToLocalStorage(blogPost);
-  return feedback;
-}
-
-function saveBlogPostToLocalStorage(blogPost) {
-  const blogPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
-  blogPosts.push(blogPost);
-  localStorage.setItem("blogPosts", JSON.stringify(blogPosts));
-  return "Blog post added successfully.";
-}
-function getBlogPost() {
-  return JSON.parse(localStorage.getItem("blogPosts")) || []
-}
 
 function createCard(data) {
   const card = document.createElement('div');
   card.classList.add('blog-card', 'flex', 'flex-col');
   
   const image = document.createElement('img');
-  image.src = `../assets/images/${data.blogthumbnail}`;
+  image.src = `http://localhost:4000/uploads/${data.thumbnail}`;
   image.alt = data.title;
   
   const contentDiv = document.createElement('div');
   contentDiv.classList.add('text-white');
   
   const datePara = document.createElement('p');
-  const dateCreated = data.dateCreated; 
+  const dateCreated = data.createdAt; 
   const parsedDate = new Date(dateCreated);
   const formattedDate = parsedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
   datePara.textContent = formattedDate;
@@ -54,7 +29,7 @@ function createCard(data) {
   titlePara.textContent = data.title;
   
   const descriptionPara = document.createElement('p');
-  let message = "🚀 Discover something new today! 🌟Explore our latest blog post for insights on a fascinating topic. 📖✨Dive into the world of knowledge with us.<br> Read more now!....";
+  let message = "🌟Read more now!....🚀";
   descriptionPara.innerHTML= message;
  
 
@@ -69,9 +44,7 @@ function createCard(data) {
 }
 
 //a function to get a signed in user
-function getAuthenticatedUser(){
-  return JSON.parse(sessionStorage.getItem("currentUser")) || null;
-}
+
 
 //get comment from local storage
 function getCommentFromLocalStorage(){
@@ -169,7 +142,6 @@ function endSession() {
 }
 
 function checkAdminPrivilage(){
-const authenticatedUser = getAuthenticatedUser();
 document.addEventListener("DOMContentLoaded", (e)=>{
   if(authenticatedUser && authenticatedUser.role !== "admin"){
     endSession();
