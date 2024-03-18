@@ -1,10 +1,13 @@
+import BlogService from "../service/blogServices.js";
+import UserServive from "../service/userServices.js";
+
 const title = document.querySelector("#blog-title");
 const category = document.querySelector("#category");
 const content = document.querySelector("#blog-description");
 const addBlogBtn = document.querySelector("#add-blog-btn");
 const imageUploadInput = document.querySelector("#imageInput");
-checkAdminPrivilage();
-// Validatin
+
+// Validation
 title.addEventListener("input", (e) => {
   if (!validateTitle(e.target.value)) {
     title.style.border = "2px solid darkred";
@@ -12,6 +15,7 @@ title.addEventListener("input", (e) => {
     title.style.border = "2px solid #742ad3";
   }
 });
+
 content.addEventListener("input", (e) => {
   if (!validateContent(tinymce.get("blog-description").getContent())) {
     content.style.border = "2px solid darkred";
@@ -20,25 +24,24 @@ content.addEventListener("input", (e) => {
   }
 });
 
-addBlogBtn.addEventListener("click", (e) => {
+addBlogBtn.addEventListener("click", async (e) => {
+  const author = UserServive.getAuthenticatedUser();
   e.preventDefault();
-  const imageName = imageUploadInput.files[0] ? imageUploadInput.files[0].name : null;
-  if (!imageName) {
-    console.error("No image uploaded");
-    return;
-  }
   console.log(tinymce.get("blog-description").getContent());
   if (
     validateTitle(title.value) &&
     validateContent(tinymce.get("blog-description").getContent())
   ) {
-    addBlogPost(
-      title.value,
-      category.value,
-      tinymce.get("blog-description").getContent(),
-      imageName
-    );
-    console.log("added");
+    const formData = new FormData();
+    formData.append("title",title.value);
+    formData.append("category", category.value);
+    formData.append("content", tinymce.get("blog-description").getContent());
+    formData.append("author", author._id);
+    formData.append("thumbnail", imageUploadInput.files[0])
+
+    const response = await BlogService.createBlog(formData);
+    const data = await response.json();
+    console.log(data);
     window.location.assign("../../blog-pages/dash-view-blog.html");
   }
 });

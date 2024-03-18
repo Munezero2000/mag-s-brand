@@ -7,7 +7,6 @@ function validateContent(contentValue) {
   return contentValue.trim() !== "" && contentValue.length >= 100;
 }
 
-
 function createCard(data) {
   const card = document.createElement('div');
   card.classList.add('blog-card', 'flex', 'flex-col');

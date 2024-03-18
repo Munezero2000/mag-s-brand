@@ -7,7 +7,7 @@ const registerBtn = document.querySelector("#register-btn");
 
 
 names.addEventListener("input", (e) => {
-  if (validateName(e.target.value)) {
+  if (UserServive.validateName(e.target.value)) {
     names.style.border = "2px solid #742ad3";
   } else {
     names.style.border = "2px solid darkred";
@@ -15,7 +15,7 @@ names.addEventListener("input", (e) => {
 });
 
 email.addEventListener("input", (e) => {
-  if (validateEmail(e.target.value)) {
+  if (UserServive.validateEmail(e.target.value)) {
     email.style.border = "2px solid #742ad3";
   } else {
     email.style.border = "2px solid darkred";
@@ -23,18 +23,25 @@ email.addEventListener("input", (e) => {
 });
 
 password.addEventListener("input", (e) => {
-  if (validatePassword(e.target.value)) {
+  if (UserServive.validatePassword(e.target.value)) {
     password.style.border = "2px solid #742ad3";
   } else {
     password.style.border = "2px solid darkred";
   }
 });
+// Check auth status
+document.addEventListener("DOMContentLoaded", async (e) => {
+  const token = UserServive.getUserToken();
+  if (token) {
+    location.href = "blog-pages/user-dashboard.html"
+  }
+})
 
 registerBtn.addEventListener("click", async (e) => {
   if (
-    validateName(names.value) &&
-    validateEmail(email.value) &&
-    validatePassword(password.value)
+    UserServive.validateName(names.value) &&
+    UserServive.validateEmail(email.value) &&
+    UserServive.validatePassword(password.value)
   ) {
     const user = {
       username: names.value,

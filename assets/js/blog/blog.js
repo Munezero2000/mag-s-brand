@@ -6,6 +6,8 @@ const logout = document.getElementById("logout");
 const signedUser = document.getElementById("signed-user");
 const registerBtn = document.getElementById("register-call")
 const dashboard = document.getElementById("dashboard-link")
+const filterCenter = document.getElementById("filter")
+const accountLink = document.getElementById("account-link");
 
 //check if user is authenticated
 const authenticatedUser = UserServive.getAuthenticatedUser();
@@ -16,6 +18,11 @@ search.addEventListener('input', (e) => {
     filter = e.target.value;
    showBlogs()
 });
+filterCenter.addEventListener('change', (e) => {
+    filter = e.target.value;
+   showBlogs()
+});
+
 
 // Event listner for initializing page content when it is loaded
 document.addEventListener("DOMContentLoaded", (e)=>{
@@ -24,6 +31,7 @@ document.addEventListener("DOMContentLoaded", (e)=>{
     if(authenticatedUser !== null){
         if(authenticatedUser && authenticatedUser.role === "admin"){
             dashboard.style.display = "block";
+            accountLink.style.display ="none";
         }
         signedUser.textContent=`Signed in as: ${authenticatedUser.email}`
         registerBtn.style.display = "none";
@@ -40,7 +48,7 @@ function renderBlogs(containerDiv, blogs, filter) {
     const container = document.querySelector(`#${containerDiv}`);
 
     let filteredBlogs = blogs.filter((blog) => {
-        return blog.title.toLowerCase().includes(filter.toLowerCase()) || blog.category.includes(filter) && blog.status.includes(published);
+        return blog.title.toLowerCase().includes(filter.toLowerCase()) || blog.category.includes(filter) && blog.status.includes("published");
     });
 
     container.innerHTML = '';
@@ -54,7 +62,8 @@ function renderBlogs(containerDiv, blogs, filter) {
     });
 }
 logout.addEventListener('click', (e)=>{
-    endSession();
+    UserServive.logout();
+    location.reload();
     signedUser.textContent ="";
     logout.innerHTML = '<a href="../../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
 });

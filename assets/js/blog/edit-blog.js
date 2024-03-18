@@ -1,57 +1,54 @@
-checkAdminPrivilage();
-document.addEventListener("DOMContentLoaded", function() {
-    function getBlogIdFromHash() {
-        const url = location.hash;
-        return url.slice(1); 
-    }
+import BlogService from "../service/blogServices.js";
+import UserServive from "../service/userServices.js";
 
-    function populateFormWithBlogData(blogId) {
-        const blogPostsData = localStorage.getItem("blogPosts");
-        const blogPosts = JSON.parse(blogPostsData) || [];
+const authenticated = UserServive.getAuthenticatedUser();
+const id = location.hash.slice(1);
 
-        const blog = blogPosts.find(post => post.id === blogId);
+document.addEventListener("DOMContentLoaded", async ()=> {
+    if(!authenticated || authenticated.role !=="admin"){
+        window.location.assign("../../blog-pages/blog.html");
+        return;
+    }else{
+
+        const response = await BlogService.getAllBlogById(id);
+        const blog = await response.json();
+
+    function populateFormWithBlogData(blog) {
         if (blog) {
-            const titleInput = document.querySelector("input[type='text']");
-            const categorySelect = document.querySelector("select");
+            const titleInput = document.querySelector("#blog-title");
+            const categorySelect = document.querySelector("#category");
             const descriptionTextarea = document.getElementById("blog-description");
 
             titleInput.value = blog.title;
             categorySelect.value = blog.category;
+            console.log(blog.category);
             descriptionTextarea.value = blog.content;
         }
     }
 
-    const blogId = getBlogIdFromHash();
-    populateFormWithBlogData(blogId);
+    populateFormWithBlogData(blog);
 
-    document.getElementById("add-blog-btn").addEventListener("click", function(event) {
+    document.getElementById("add-blog-btn").addEventListener("click", async(event)=> {
         event.preventDefault(); 
 
-        const title = document.querySelector("input[type='text']").value;
-        const category = document.querySelector("select").value;
-        const content = tinymce.get("blog-description").getContent();
+        const title = document.querySelector("#blog-title");
+        const category = document.querySelector("#category");
+        const content = document.querySelector("#blog-description");
+        const imageUploadInput = document.querySelector("#imageInput");
+        const author = UserServive.getAuthenticatedUser();
 
-        const blogPostsData = localStorage.getItem("blogPosts");
-        const blogPosts = JSON.parse(blogPostsData) || [];
-        const updatedBlogPosts = blogPosts.map(post => {
-            if (post.id === blogId) {
-                // Update only if the form field is not empty
-                const updatedPost = {
-                    id: post.id,
-                    title: title || post.title,
-                    category: category || post.category,
-                    content: content || post.content,
-                    author: post.author,
-                    dateCreated: post.dateCreated,
-                    blogthumbnail: post.blogthumbnail
-                };
-                return updatedPost;
-            } else {
-                return post;
-            }
-        });
-        localStorage.setItem("blogPosts", JSON.stringify(updatedBlogPosts));
+        const formData = new FormData();
+        formData.append("title",title.value);
+        formData.append("category", category.value);
+        formData.append("content", tinymce.get("blog-description").getContent());
+        formData.append("author", author._id);
+        formData.append("thumbnail", imageUploadInput.files[0])
+
+        const response = await BlogService.updateBlog(id,formData);
+        const data = await response.json();
+        console.log(data);
+
         window.location.assign("./dash-view-blog.html");
-    });  
+    });  }
 });
 console.log("Hi")

@@ -1,3 +1,5 @@
+import UserServive from "./userServices.js";
+
  
 export default class MessageServices{
     static async sendMessage(message) {
@@ -10,6 +12,40 @@ export default class MessageServices{
                 body: JSON.stringify(message)
             });
 
+            return response; 
+        }
+        catch (error) {
+            console.error(`Error in user registration ${error}`);
+            throw error;
+        }
+    }
+    static async deleteMessage(messageId) {
+        try {
+            const token = UserServive.getUserToken();
+            const response = await fetch(`http://localhost:4000/api/messages/${messageId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-auth-token": token
+                }
+            });
+            return response; 
+        }
+        catch (error) {
+            console.error(`Error in user registration ${error}`);
+            throw error;
+        }
+    }
+    static async getAllMessages() {
+        try {
+            const token = UserServive.getUserToken();
+            const response = await fetch("http://localhost:4000/api/messages/", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-auth-token": token
+                }
+            });
             return response; 
         }
         catch (error) {

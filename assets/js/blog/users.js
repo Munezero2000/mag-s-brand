@@ -1,3 +1,5 @@
+import UserServive from "../service/userServices.js";
+
 const search = document.getElementById("search-input");
 const allUsers = document.getElementById("all-users");
 const admins = document.getElementById("admins");
@@ -6,35 +8,48 @@ const select = document.getElementById("select");
 const subs= document.getElementById("subscribers");
 
 let filter = "";
-document.addEventListener("DOMContentLoaded", function () {
-    
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+const getUserData =async ()=>{
+    const response = await UserServive.getAllUsers();
+    const data = await response.json();
+    if(response.ok){
+        return data;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", async () =>{
+    const authenticated = UserServive.getAuthenticatedUser();
+    if(!authenticated || authenticated.role !=="admin"){
+        window.location.assign("../../blog-pages/blog.html");
+        return;}
+
+    const data = await getUserData();
     const subscribers = JSON.parse(localStorage.getItem("subscribers")) || [];
-    allUsers.textContent = users.length;
-    admins.textContent = renderUsersInformation('admin').length;
-    reader.textContent = renderUsersInformation('reader').length;
+    allUsers.textContent = data.usersCount;
+    admins.textContent = renderUsersInformation(data.users, 'admin').length;
+    reader.textContent = renderUsersInformation(data.users,'reader').length;
     subs.textContent = subscribers.length;
-    renderUsersInformation(filter);
+    renderUsersInformation(data.users,filter);
 });
 
-search.addEventListener("input", (e) => {
+search.addEventListener("input", async (e) => {
     filter = e.target.value;
-    renderUsersInformation(filter);
+    const data = await getUserData();
+    renderUsersInformation(data.users, filter);
 });
 
-select.addEventListener("change", (e)=>{
+select.addEventListener("change", async (e)=>{
     filter = e.target.value;
-    renderUsersInformation(filter);
+    const data = await getUserData();
+    renderUsersInformation(data.users,filter);
 })
 
-function renderUsersInformation(filter) {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+function renderUsersInformation(users, filter) {
     const tableBody = document.querySelector("#user-table tbody");
     tableBody.innerHTML = "";
-
     const filteredUsers = users.filter((user) => {
         return (
-            user.name.toLowerCase().includes(filter.toLowerCase()) ||
+            user.username.toLowerCase().includes(filter.toLowerCase()) ||
             user.role.toLowerCase().includes(filter.toLowerCase())
         );
     });
@@ -51,7 +66,7 @@ function renderUsersInformation(filter) {
         idCell.textContent = index + 1;
 
         const nameCell = document.createElement("td");
-        nameCell.innerHTML = highlightSearchTerm(user.name, filter);
+        nameCell.innerHTML = highlightSearchTerm(user.username, filter);
 
         const emailCell = document.createElement("td");
         emailCell.innerHTML = highlightSearchTerm(user.email, filter);

@@ -38,13 +38,14 @@
             <div id="info-section">
                 <div id="profile-section" class="flex flex-center">
                     <div id="info-section-img">
-                        <img src="../assets/images/profile.jpg" alt="">
+                        <img src="../assets/images/profile.jpg" id="user-img" alt="">
                         <i id="edit-img" class="fa-solid fa-pen-to-square"></i>
+                        <input type="file" id="file-input" style="display: none;" accept="image/*">
                     </div>
                     <div id="info-section-desc">
-                        <p id="user-name" >Munezero Ange</p>
-                        <p id="user-role" >Admin</p>
-                        <p id="user-id" >ID: fca32507-9cd1-45a7-a626-eb2771ba4ec9</p>
+                        <p id="user-name">Munezero Ange</p>
+                        <p id="user-role">Admin</p>
+                        <p id="user-id">ID: fca32507-9cd1-45a7-a626-eb2771ba4ec9</p>
                     </div>
                 </div>
                 <form action="">
@@ -64,24 +65,24 @@
             </div>
             <div id="password-section">
                 <h1>Modify Password</h1>
-                <p>Enter required information below to change password </p>
+                <p id="feedback">Enter required information below to change password </p>
                 <form action="">
                     <div class="form-element">
                         <label for="">Old Password</label>
-                        <input type="text" placeholder="Enter your old password">
+                        <input type="password" placeholder="Enter your old password">
                     </div>
                     <div class="form-element">
                         <label for="">New Password</label>
-                        <input type="text" placeholder="Enter a new password">
+                        <input type="password" id="password" placeholder="Enter a new password">
                     </div>
                     <div class="form-element">
                         <label for="">Repeat Password</label>
-                        <input type="text" placeholder="Repeat new password">
+                        <input type="password" id="cpassword" placeholder="Repeat new password">
                     </div>
                     <div class="flex flex-end">
-                        <input type="submit" value="Change Password" class="btn">
+                        <input type="submit" id="change-password-btn" value="Change Password" class="btn">
                     </div>
-                     
+
                 </form>
             </div>
         </section>
@@ -89,6 +90,7 @@
         </section>
     </div>
     <script src="../assets/js/blog/blogfunctions.js"></script>
+    <script type="module" src="../assets/js/blog/user-dashboard.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,30 @@
 import MessageServices from "./service/MessgeServices.js";
+import UserServive from "./service/userServices.js";
 
+const name = document.querySelector("#feedback-name")
+const email = document.querySelector("#feedback-email")
+const message = document.querySelector("#feedback-message")
+const feedback = document.querySelector("#feedback")
 const menu = document.querySelector("#nav-bar");
+const authBtn = document.getElementById("auth-button")
+const feedbackBtn = document.querySelector("#send-feedback-btn")
+
+
+document.addEventListener("DOMContentLoaded", async(e)=>{
+  const authenticated = UserServive.getAuthenticatedUser();
+  if(authenticated){
+    authBtn.innerHTML = '<a class="nav-icon"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>'
+    authBtn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      UserServive.logout();
+      location.href="login.html";
+    })
+  }else{
+    authBtn.innerHTML = '<a class="nav-icon" href="../../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
+  }
+})
+
+// Menu button mgt
 const container = document.querySelector(".container");
 document.querySelector("#close-nav-item").addEventListener("click", (e) => {
   menu.style.display = "none";
@@ -12,12 +36,6 @@ document.querySelector("#menu-icon").addEventListener("click", (e) => {
 });
 
 //clients message and feeback
-const name = document.querySelector("#feedback-name")
-const email = document.querySelector("#feedback-email")
-const message = document.querySelector("#feedback-message")
-const feedback = document.querySelector("#feedback")
-const feedbackBtn = document.querySelector("#send-feedback-btn")
-
 feedbackBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   if (!name.value || !email.value || message.value.length < 10) {

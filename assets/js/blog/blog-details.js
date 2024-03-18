@@ -1,5 +1,7 @@
 import UserServive from "../service/userServices.js";
 import BlogService from "../service/blogServices.js";
+import MessageServices from "../service/MessgeServices.js";
+import CommentService from "../service/commentServices.js";
 
 const commentBox = document.querySelector("#comment-text");
 const feedback = document.querySelector("#feedback");
@@ -15,18 +17,21 @@ const subscribeBtn = document.getElementById("subscribe-btn")
 const subFeedback = document.getElementById("sub-feedback");
 const subscribeSection = document.getElementById("subscribe")
 const blogSection = document.querySelector("#blog-section");
+const commenterImage = document.getElementById("commenter-img")
+const accountLink = document.getElementById("account-link");
 
 // getting the # from a Blog ID
-const url = location.hash
-const blogId = url.slice(1);
-if (!blogId) {
-    window.location.assign("../../blog-pages/blog.html");
-}
+let blogId;
+let authenticatedUser
 
-const authenticatedUser = UserServive.getAuthenticatedUser();
 
 // fill the page with the blog content dynamically
 document.addEventListener("DOMContentLoaded", async () => {
+    authenticatedUser = UserServive.getAuthenticatedUser();
+    blogId = location.hash.slice(1);
+    if (!blogId) {
+        window.location.assign("../../blog-pages/blog.html");
+    }
     const data = await BlogService.getAllBlogById(blogId);
     const blog = await data.json();
 
@@ -34,6 +39,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (authenticatedUser !== null) {
         subscribeSection.style.display = "none";
         signedUser.textContent = `Signed in as: ${authenticatedUser.email}`
+        let answer = await UserServive.getUserById(authenticatedUser._id)
+        let user = await answer.json();
+
+        commenterImage.src = `http://localhost:4000/uploads/${user.profile}`
         logout.innerHTML = '<a ><i class="fa-solid fa-right-from-bracket"></i> Logout</a>'
     } else {
         subscribeSection.style.display = "flex";
@@ -60,6 +69,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else {
         blogSection.innerHTML = "<p>Blog post not found</p>";
     }
+
+    // Show blog comments
+    const response = await CommentService.getBlogComments(blogId);
+    if (response.ok) {
+        const blogCommentsDetails = await response.json();
+        commentCount.textContent = `${blogCommentsDetails.commentsCount || 0} Comments`;
+        renderBlogComment(blogCommentsDetails.comments)
+    }
+
 });
 
 subscribeBtn.addEventListener('click', (e) => {
@@ -92,95 +110,94 @@ subscribeBtn.addEventListener('click', (e) => {
     }
 })
 
-
-
 // add Comment when the button is clicked
-commentBtn.addEventListener('click', (e) => {
+commentBtn.addEventListener('click', async (e) => {
     e.preventDefault();
-    const user = getAuthenticatedUser();
-    if (user === null) {
-        window.location.assign("../../login.html")
-    } else {
-        if (commentBox.value.length < 10) {
-            feedback.textContent = "Comment must at least be 10 characters!";
-            feedback.style.color = "red";
-        } else {
-            feedback.style.color = "green"
-            addCommentToLocalStorage(user.id, blogId, commentBox.value)
-            window.location.reload();
-        }
+
+    const comment = {
+        author: authenticatedUser._id,
+        blog: blogId,
+        content: commentBox.value
     }
+    console.log(comment);
+    const response = await CommentService.createComment(comment);
+    const data = await response.json();
+    if(response.ok){
+        commentBox.textContent = "";
+        window.location.reload();
+    }
+    console.log(data);
+
+    // if (user === null) {
+    //     window.location.assign("../../login.html")
+    // } else {
+    //     if (commentBox.value.length < 10) {
+    //         feedback.textContent = "Comment must at least be 10 characters!";
+    //         feedback.style.color = "red";
+    //     } else {
+    //         feedback.style.color = "green"
+    //         addCommentToLocalStorage(user.id, blogId, commentBox.value)
+    //         window.location.reload();
+    //     }
+    // }
 });
 
-// Show blog comments
-const blogComment = findCommentsById(blogId);
-commentCount.textContent = `${blogComment.length || 0} Comments`;
 
-blogComment.forEach(comment => {
-    // Create user profile image element
-    const userProfileImg = document.createElement("img");
-    userProfileImg.src = "../assets/images/profile.jpg";
-    userProfileImg.classList.add("profile-image"); // Add any necessary classes
+function renderBlogComment(blogComment) {
+    blogComment.forEach(comment => {
+        // Create user profile image element
+        const userProfileImg = document.createElement("img");
+        userProfileImg.src = `http://localhost:4000/uploads/${comment.author.profile}`;
+        userProfileImg.classList.add("profile-image"); // Add any necessary classes
 
-    // Create user profile container element
-    const userProfileContainer = document.createElement("div");
-    userProfileContainer.id = "user-profile";
-    userProfileContainer.classList.add("flex", "align-center");
-    userProfileContainer.appendChild(userProfileImg);
+        // Create user profile container element
+        const userProfileContainer = document.createElement("div");
+        userProfileContainer.id = "user-profile";
+        userProfileContainer.classList.add("flex", "align-center");
+        userProfileContainer.appendChild(userProfileImg);
 
-    // Create user name and time element
-    const userNameAndTime = document.createElement("div");
-    userNameAndTime.classList.add("user-name-time");
+        // Create user name and time element
+        const userNameAndTime = document.createElement("div");
+        userNameAndTime.classList.add("user-name-time");
 
-    const commentorName = document.createElement("p");
-    const user = findUserById(comment.user)
-    commentorName.id = "commentor-name";
-    commentorName.textContent = user.name;
+        const commentorName = document.createElement("p");
+        commentorName.id = "commentor-name";
+        commentorName.textContent = comment.author.username;
 
-    // Create time since commented element
-    const timeSinceCommented = document.createElement("p");
-    timeSinceCommented.classList.add("delighted");
-    timeSinceCommented.textContent = calculateTimeSinceCommented(comment.commentedOn);
+        // Create time since commented element
+        const timeSinceCommented = document.createElement("p");
+        timeSinceCommented.classList.add("delighted");
+        timeSinceCommented.textContent = calculateTimeSinceCommented(comment.createdAt);
 
-    userNameAndTime.appendChild(commentorName);
-    userNameAndTime.appendChild(timeSinceCommented);
+        userNameAndTime.appendChild(commentorName);
+        userNameAndTime.appendChild(timeSinceCommented);
 
-    const commentedText = document.createElement("p");
-    commentedText.id = "commented-text";
-    commentedText.innerHTML = comment.comment;
-    userNameAndTime.appendChild(commentedText);
+        const commentedText = document.createElement("p");
+        commentedText.id = "commented-text";
+        commentedText.innerHTML = comment.content;
+        userNameAndTime.appendChild(commentedText);
 
-    const deleteButton = document.createElement("i");
-    deleteButton.classList.add("fas", "fa-trash-can");
-    deleteButton.style.color = "white"
-    deleteButton.style.cursor = "pointer";
-    userNameAndTime.appendChild(deleteButton);
+        const deleteButton = document.createElement("i");
+        deleteButton.classList.add("fas", "fa-trash-can");
+        deleteButton.style.color = "white"
+        deleteButton.style.cursor = "pointer";
+        userNameAndTime.appendChild(deleteButton);
 
-
-    const authenticatedUser = getAuthenticatedUser();
-    if (authenticatedUser && authenticatedUser.id === comment.user) {
-        deleteButton.style.display = "block";
-        deleteButton.addEventListener("click", () => {
-            deleteCommentFromLocalStorage(comment.id);
-            window.location.reload();
-        });
-    } else {
         deleteButton.style.display = "none";
-    }
 
-    // Create the main commented container
-    const commentedContainer = document.createElement("div");
-    commentedContainer.id = "commented";
-    commentedContainer.classList.add("flex");
-    commentedContainer.appendChild(userProfileContainer);
-    commentedContainer.appendChild(userNameAndTime);
-    // commentedContainer.appendChild(commentedText);
-    // commentedContainer.appendChild(deleteButton);
+        // Create the main commented container
+        const commentedContainer = document.createElement("div");
+        commentedContainer.id = "commented";
+        commentedContainer.classList.add("flex");
+        commentedContainer.appendChild(userProfileContainer);
+        commentedContainer.appendChild(userNameAndTime);
+        // commentedContainer.appendChild(commentedText);
+        // commentedContainer.appendChild(deleteButton);
 
-    // Append the commented container to the main container
-    container.appendChild(commentedContainer);
-});
-
+        // Append the commented container to the main container
+        container.appendChild(commentedContainer);
+    });
+}
 
 // Function to calculate time since comment was made
 function calculateTimeSinceCommented(commentDate) {

@@ -1,28 +1,39 @@
-checkAdminPrivilage();
-document.addEventListener("DOMContentLoaded", function() {
-    const url = location.hash;
-    const blogId = url.slice(1);
+import UserServive from "../service/userServices.js";
+import BlogService from "../service/blogServices.js";
+let blogId;
+document.addEventListener("DOMContentLoaded", async ()=> {
+    const authenticated = UserServive.getAuthenticatedUser();
+    if (!authenticated || authenticated.role !== "admin") {
+        window.location.assign("../../blog-pages/blog.html");
+        return;
+    }
+     blogId = location.hash.slice(1);
+    const res = await BlogService.getAllBlogById(blogId);
+    const blog = await res.json();
+    const blogTitle = document.getElementById("blog-title");
+    blogTitle.textContent = `Titled: ${blog.title}` || "";
 
-    const blogPostsData = localStorage.getItem("blogPosts");
-    const blogPosts = JSON.parse(blogPostsData);
-    const blogSection = document.querySelector("#blog-section");
-    const deleteContainer = document.querySelector("#delete-container");
+    // Get blog title title
+    const response = await BlogService.getAllBlogById(blogId);
 
-  
-    function deleteBlogPost() {
-        const index = blogPosts.findIndex(post => post.id === blogId);
-        if (index !== -1) {
-            blogPosts.splice(index, 1);
-            localStorage.setItem("blogPosts", JSON.stringify(blogPosts));
-        }
+   
+});
+
+
+const blogSection = document.querySelector("#blog-section");
+const deleteContainer = document.querySelector("#delete-container");
+
+
+document.getElementById("blog-delete-btn").addEventListener("click", async () => {
+    const response = await BlogService.deleteBlog(blogId);
+    const data = await response.json();
+    console.log(data)
+    if (response.ok) {
+        window.location.assign('./dash-view-blog.html')
     }
 
-    document.getElementById("blog-delete-btn").addEventListener("click", function() {
-        deleteBlogPost();
-        window.location.assign('./dash-view-blog.html')
-    });
-
-    document.getElementById("cancel-delete-btn").addEventListener("click", function() {
-        window.location.href = `blog-detail.html#${blogId}`;
-    });
 });
+document.getElementById("cancel-delete-btn").addEventListener("click", async () => {
+        window.location.href = "dash-view-blog.html";
+});
+

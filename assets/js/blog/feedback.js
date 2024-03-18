@@ -1,11 +1,17 @@
-checkAdminPrivilage();
-function displayFeedbackMessages() {
+import MessageServices from "../service/MessgeServices.js";
+
+document.addEventListener("DOMContentLoaded", async ()=>{
+  const response = await MessageServices.getAllMessages();  
+  if(response.ok){
+    const data = await response.json();
+    displayFeedbackMessages(data)
+  }
+});
+
+function displayFeedbackMessages(feedbacks) {
   const container = document.getElementById("blogs-m-cards");
   container.innerHTML = "";
-
-  const feedbackMessages = JSON.parse(localStorage.getItem("feedbacks")) || [];
-
-  feedbackMessages.forEach((feedback) => {
+  feedbacks.forEach((feedback) => {
       const feedbackCardDiv = document.createElement("div");
       feedbackCardDiv.classList.add("blog-m-card");
 
@@ -15,24 +21,24 @@ function displayFeedbackMessages() {
 
       const messageP = document.createElement("p");
       messageP.classList.add("blog-title");
-      messageP.textContent = feedback.message;
+      messageP.textContent = feedback.content;
 
       const actionDiv = document.createElement("div");
-      actionDiv.classList.add("feedback-actions");
+      actionDiv.classList.add(["flex", "space-between", "items-center"]);
 
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "Delete";
-      deleteButton.classList.add("btn");
+      deleteButton.classList.add("feed-btn");
       deleteButton.addEventListener("click", function() {
-        const feedbackId = feedback.id; // Assuming feedback has an 'id' property
-        deleteFeedbackMessage(feedbackId);
+        deleteFeedbackMessage(feedback._id);
     });
 
       const replyButton = document.createElement("button");
       replyButton.textContent = "Reply";
-      replyButton.classList.add("btn");
+      replyButton.classList.add("feed-btn");
       replyButton.addEventListener("click", function() {
-          // Handle reply action
+        const mailtoUrl = `mailto:${feedback.senderEmail}`;
+        window.location.href = mailtoUrl;
           console.log("Reply to feedback:", feedback);
       });
 
@@ -45,14 +51,12 @@ function displayFeedbackMessages() {
   });
 }
 
-function deleteFeedbackMessage(feedbackId) {
-  const feedbackMessages = JSON.parse(localStorage.getItem("feedbacks")) || [];
-  const updatedFeedbackMessages = feedbackMessages.filter(feedback => feedback.id !== feedbackId);
-  localStorage.setItem("feedbacks", JSON.stringify(updatedFeedbackMessages));
-  displayFeedbackMessages();
+async function deleteFeedbackMessage(feedbackId) {
+  const response = await MessageServices.deleteMessage(feedbackId); 
+  if(response.ok){
+    const data = await response.json();
+    console.log(data);
+    location.reload();
+  }
 }
-
-
-  
-  displayFeedbackMessages();
   
