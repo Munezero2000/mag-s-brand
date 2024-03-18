@@ -4,7 +4,7 @@ import UserServive from "./userServices.js";
 export default class MessageServices{
     static async sendMessage(message) {
         try {
-            const response = await fetch("http://localhost:4000/api/messages/", {
+            const response = await fetch("https://mag-s-brand-backend.onrender.com/api/messages/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -22,7 +22,7 @@ export default class MessageServices{
     static async deleteMessage(messageId) {
         try {
             const token = UserServive.getUserToken();
-            const response = await fetch(`http://localhost:4000/api/messages/${messageId}`, {
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/messages/${messageId}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export default class MessageServices{
     static async getAllMessages() {
         try {
             const token = UserServive.getUserToken();
-            const response = await fetch("http://localhost:4000/api/messages/", {
+            const response = await fetch("https://mag-s-brand-backend.onrender.com/api/messages/", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

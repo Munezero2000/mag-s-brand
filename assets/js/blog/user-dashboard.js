@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             names.textContent = user.username;
             role.textContent = user.role.toUpperCase();
             userId.textContent = user._id
-            userImage.src = `http://localhost:4000/uploads/${user.profile}`
+            userImage.src = `https://mag-s-brand-backend.onrender.com/uploads/${user.profile}`
             namesInput.value = user.username;
             emailInput.value = user.email;
         }

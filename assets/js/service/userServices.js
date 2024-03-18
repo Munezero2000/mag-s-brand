@@ -1,7 +1,7 @@
 export default class UserServive {
     static async registerUser(user) {
         try {
-            const response = await fetch("http://localhost:4000/api/users/", {
+            const response = await fetch("https://mag-s-brand-backend.onrender.com/api/users/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -21,7 +21,7 @@ export default class UserServive {
     static async getAllUsers() {
         const token = this.getUserToken();
         try {
-            const response = await fetch("http://localhost:4000/api/users/", {
+            const response = await fetch("https://mag-s-brand-backend.onrender.com/api/users/", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export default class UserServive {
     static async getUserById(userId) {
         const token = this.getUserToken();
         try {
-            const response = await fetch(`http://localhost:4000/api/users/${userId}`, {
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/users/${userId}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export default class UserServive {
     static async updateUserInformation(userId, data) {
         const token = this.getUserToken();
         try {
-            const response = await fetch(`http://localhost:4000/api/users/${userId}`, {
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/users/${userId}`, {
                 method: "PUT",
                 headers: {
                     'x-auth-token': token
@@ -77,7 +77,7 @@ export default class UserServive {
     static async deleteUserAccount(userId) {
         const token = this.getUserToken();
         try {
-            const response = await fetch(`http://localhost:4000/api/users/${userId}`, {
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/users/${userId}`, {
                 method: "DELETE",
                 headers: {
                     'x-auth-token': token
@@ -93,7 +93,7 @@ export default class UserServive {
 
     static async authenticateUser(user) {
         try {
-            const response = await fetch("http://localhost:4000/api/auth/", {
+            const response = await fetch("https://mag-s-brand-backend.onrender.com/api/auth/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

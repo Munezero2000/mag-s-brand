@@ -2,7 +2,7 @@ import UserServive from "../service/userServices.js"
 export default class BlogService {
     static async getAllBlogs() {
         try {
-            const response = await fetch("http://localhost:4000/api/blogs/")
+            const response = await fetch("https://mag-s-brand-backend.onrender.com/api/blogs/")
             return response;
         }
         catch (error) {
@@ -13,7 +13,7 @@ export default class BlogService {
 
     static async getAllBlogById(blogId) {
         try {
-            const response = await fetch(`http://localhost:4000/api/blogs/${blogId}`)
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/blogs/${blogId}`)
             return response;
         }
         catch (error) {
@@ -25,7 +25,7 @@ export default class BlogService {
     static async createBlog(data) {
         const token = UserServive.getUserToken();
         try {
-            const response = await fetch("http://localhost:4000/api/blogs/", {
+            const response = await fetch("https://mag-s-brand-backend.onrender.com/api/blogs/", {
                 method: "POST",
                 headers: {
                     "x-auth-token": token
@@ -44,7 +44,7 @@ export default class BlogService {
     static async updateBlog(id, data) {
         const token = UserServive.getUserToken();
         try {
-            const response = await fetch(`http://localhost:4000/api/blogs/${id}`, {
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/blogs/${id}`, {
                 method: "PUT",
                 headers: {
                     "x-auth-token": token
@@ -63,7 +63,7 @@ export default class BlogService {
     static async updateBlogLikes(blogId, userId) {
         const token = UserServive.getUserToken();
         try {
-            const response = await fetch(`http://localhost:4000/api/blogs/${id}`, {
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/blogs/${id}`, {
                 method: "PUT",
                 headers: {
                     "x-auth-token": token
@@ -82,7 +82,7 @@ export default class BlogService {
     static async deleteBlog(id) {
         const token = UserServive.getUserToken();
         try {
-            const response = await fetch(`http://localhost:4000/api/blogs/${id}`, {
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/blogs/${id}`, {
                 method: "DELETE",
                 headers: {
                     "x-auth-token": token

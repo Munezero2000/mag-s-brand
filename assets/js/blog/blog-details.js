@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         let answer = await UserServive.getUserById(authenticatedUser._id)
         let user = await answer.json();
 
-        commenterImage.src = `http://localhost:4000/uploads/${user.profile}`
+        commenterImage.src = `https://mag-s-brand-backend.onrender.com/uploads/${user.profile}`
         logout.innerHTML = '<a ><i class="fa-solid fa-right-from-bracket"></i> Logout</a>'
     } else {
         subscribeSection.style.display = "flex";
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const date = blogSection.querySelector("#blog-date");
         const content = blogSection.querySelector("#blog-content-details");
 
-        image.src = `http://localhost:4000/uploads/${blog.thumbnail}`;
+        image.src = `https://mag-s-brand-backend.onrender.com/uploads/${blog.thumbnail}`;
         title.textContent = blog.title;
         author.textContent = `Written by ${blog.author.username}`;
         const dateCreated = blog.createdAt;
@@ -147,7 +147,7 @@ function renderBlogComment(blogComment) {
     blogComment.forEach(comment => {
         // Create user profile image element
         const userProfileImg = document.createElement("img");
-        userProfileImg.src = `http://localhost:4000/uploads/${comment.author.profile}`;
+        userProfileImg.src = `https://mag-s-brand-backend.onrender.com/uploads/${comment.author.profile}`;
         userProfileImg.classList.add("profile-image"); // Add any necessary classes
 
         // Create user profile container element
