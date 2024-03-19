@@ -12,7 +12,7 @@ function createCard(data) {
   card.classList.add('blog-card', 'flex', 'flex-col');
   
   const image = document.createElement('img');
-  image.src = `https://mag-s-brand-backend.onrender.com/uploads/${data.thumbnail}`;
+  image.src = data.thumbnail;
   image.alt = data.title;
   
   const contentDiv = document.createElement('div');
