@@ -1,16 +1,23 @@
-*{
+* {
     transition: color 300ms, background-color 300ms;
 }
-.container{
+
+.container {
     margin: 0 10rem;
 }
-#user-settings{
+
+#navigation {
+    z-index: 999;
+}
+
+#user-settings {
     border-top: 2px solid #742ad3;
     border-bottom: 2px solid #742ad3;
     padding: 3rem 0 1rem 0;
-    margin: 2rem 0;
+    margin: 10rem 0;
     position: relative;
 }
+
 .title {
     background-color: #742ad3;
     color: white;
@@ -22,69 +29,148 @@
     /* right: 50%; */
     position: absolute;
 }
-#info-section{
-   width: 50%;
+
+#info-section {
+    width: 50%;
 }
-#info-section-desc{
+
+#info-section-desc {
     font-size: 2rem;
     color: white;
     font-weight: 600;
     width: 60%;
 }
-#info-section-img{
+
+#info-section-img {
     width: 40%;
 }
-#password-section{
-    width: 45%; 
+
+#password-section {
+    width: 45%;
 }
 
-#password-section> h1 {
-    color:#742ad3;
+#password-section>h1 {
+    color: #742ad3;
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 1rem;
 }
-#password-section> p {
+
+#password-section>p {
     color: white;
     font-size: 1.5rem;
 }
-#profile-section{
-    background-color:#742ad3;
+
+#profile-section {
+    background-color: #742ad3;
     border-radius: 10px;
     padding: 1rem;
-    background: rgb(2,0,36);
-    background: linear-gradient(351deg, rgba(2,0,36,1) 0%, rgba(116,42,211,1) 35%, rgba(0,212,255,1) 100%);
+    background: rgb(2, 0, 36);
+    background: linear-gradient(351deg, rgba(2, 0, 36, 1) 0%, rgba(116, 42, 211, 1) 35%, rgba(0, 212, 255, 1) 100%);
 }
-#edit-img{
+
+#edit-img {
     font-size: 2rem;
     color: white;
 }
-#edit-img:hover{
+
+#edit-img:hover {
     cursor: pointer;
 }
-#delete-acc-btn:hover{
+
+#delete-acc-btn:hover {
     background-color: darkred;
     color: white;
 }
-.btn:hover{
+
+.btn:hover {
     background-color: #742ad3;
     color: white;
 }
-#profile-section > div > img {
+
+#profile-section>div>img {
     width: 80%;
     height: 150px;
     border-radius: 100%;
     object-fit: cover;
-    border: 5px solid rgba(0, 0, 0, 0.1); /* Add a subtle border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-  }
-  .form-element > label{
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    /* Add a subtle border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Add a subtle box shadow */
+}
+
+.form-element>label {
     font-size: 2rem;
-  }
-  .form-element > input{
+}
+
+.form-element>input {
     padding: 1rem;
-    color:black;
+    color: black;
     font-size: 1.5rem;
     border-radius: 0.5rem;
     background-color: rgb(232, 240, 254);
-  }
+}
+
+@media(min-width: 768px) and (max-width: 1023px) {
+    .container {
+        margin: 0 5rem;
+    }
+}
+
+@media(max-width: 768px) {
+    .container {
+        margin: 0 1rem;
+    }
+
+    #user-settings {
+        flex-direction: column
+    }
+
+    #btns{
+        flex-direction: column-reverse;
+        font-size: 1.5rem;
+    }
+
+    #info-section {
+        width: 100%;
+    }
+    #profile-section{
+        flex-direction: column
+    }
+    #info-section-desc {
+        font-size: 2rem;
+        color: white;
+        font-weight: 600;
+        width: 100%;
+    }
+
+    #info-section {
+        width: 100%;
+    }
+    .btn {
+        background-color: #742ad3;
+        color: white;
+    }
+
+    #info-section-img {
+        width: 70%;
+        object-fit: cover;
+        margin-bottom: 2rem;
+    }
+    #profile-section>div>img {
+        width: 80%;
+        height: 160px;
+    }
+    #password-section {
+        width: 100%;
+    }
+
+    #delete-acc-btn {
+        background-color: darkred;
+        color: white;
+    }
+
+    .title {
+        top: -1.7%;
+    }
+}
