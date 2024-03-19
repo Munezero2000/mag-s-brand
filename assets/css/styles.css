@@ -618,6 +618,14 @@ html {
   .blog-card {
     width: 48%;
   }
+
+  .blog-card > div :nth-child(3) {
+    font-size: 1.r5rem;
+  }
+  .blog-card > div :nth-child(2) {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
 }
 @media (max-width: 767px) {
   #blogs {
@@ -627,9 +635,7 @@ html {
   #blogs > div {
     flex-wrap: wrap;
   }
-  .blog-card {
-    /* padding: 1rem; */
-  }
+
   .blog-card > div > p {
     margin: 1rem 0;
     font-size: 1rem;
@@ -642,6 +648,14 @@ html {
     width: 100%;
     flex-direction: row-reverse;
     object-fit: contain;
+  }
+
+  .blog-card > div :nth-child(3) {
+    font-size: 1rem;
+  }
+  .blog-card > div :nth-child(2) {
+    font-size: 1.5rem;
+    font-weight: 600;
   }
 }
 

@@ -17,23 +17,23 @@
     <title>Mag-s-brand</title>
 </head>
 
-<body>
+<body style="position: relative;">
     <div id="loader" class="loader"></div>
+    <nav id="navigation" class="flex space-between">
+        <div id="signed-user">
+            Register today
+        </div>
+        <ul class="flex gap-4 flex-end">
+            <li><a href="./blog.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="../index.html"><i class="fa-solid fa-briefcase"></i> Portfolio</a></li>
+            <li id="dashboard-link"><a href="/blog-pages/dash-view-blog.html"><i
+                        class="fa-solid fa-screwdriver-wrench"></i> Dashboard</a></li>
+            <li id="account-link"><a href="/blog-pages/user-dashboard.html"><i
+                        class="fa-solid fa-gear"></i>Account</a></li>
+            <li id="logout"></li>
+        </ul>
+    </nav>
     <section id="blog-hero" class="flex flex-col">
-        <nav style="padding: 2rem 0;" id="navigation" class="flex space-between">
-            <div id="signed-user">
-
-            </div>
-            <ul class="flex gap-4 flex-end">
-                <li><a href="./blog.html"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a href="../index.html"><i class="fa-solid fa-briefcase"></i> Portfolio</a></li>
-                <li id="dashboard-link"><a href="/blog-pages/dash-view-blog.html"><i
-                            class="fa-solid fa-screwdriver-wrench"></i> Dashboard</a></li>
-                <li id="account-link"><a href="/blog-pages/user-dashboard.html"><i
-                            class="fa-solid fa-gear"></i>Account</a></li>
-                <li id="logout"></li>
-            </ul>
-        </nav>
         <div id="hero-right">
             <p style="text-align: center;">My <span class="highlighted">Personal</span> Blog</p>
             <p>Explore my papers here and start <span class="highlighted">knowledge sharing</span> today with me.</p>
@@ -53,7 +53,6 @@
                 <i class="fa-solid fa-magnifying-glass fa-2x"></i>
                 <input id="search-input" placeholder="Enter a title to search" type="text">
             </div>
-            <button>Search</button>
         </div>
         <div id="search-div" class="flex">
             <div>
