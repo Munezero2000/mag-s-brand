@@ -82,7 +82,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #6231a2;
+  background-color: #742ad3;
   border-radius: 4px;
 }
 
@@ -526,7 +526,7 @@ html {
 }
 .project-card {
   width: 24%;
-  background-color: #6231a2;
+  background-color: #742ad3;
   border-radius: 10px;
   padding: 1rem;
 }
@@ -576,7 +576,7 @@ html {
 }
 .blog-card {
   width: 30%;
-  background-color: #6231a2;
+  background-color: #742ad3;
   /* border-radius: 10px; */
   overflow: hidden;
   margin: 2rem 0;
@@ -620,7 +620,7 @@ html {
   }
 
   .blog-card > div :nth-child(3) {
-    font-size: 1.r5rem;
+    font-size: 1.5rem;
   }
   .blog-card > div :nth-child(2) {
     font-size: 1.8rem;
@@ -727,7 +727,7 @@ html {
   }
   #contact-form {
     width: 100%;
-    border-top: 4px solid #6231a2;
+    border-top: 4px solid #742ad3;
     padding: 2rem;
   }
   #contact-info {
@@ -1227,7 +1227,7 @@ background: linear-gradient(351deg, rgba(2,0,36,1) 0%, rgba(116,42,211,1) 35%, r
 tr.user-information{
   background-color: white;
   border-radius: 10px;
-  border: 1px solid #6231a2;
+  border: 1px solid #742ad3;
 }
 
 .user-information> td {
@@ -1235,17 +1235,17 @@ tr.user-information{
   padding: 1.5rem;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #6231a2;
+  color: #742ad3;
 }
 
 .action{
   /* display: flex; */
   color: white;
-  background-color: #6231a2;
+  background-color: #742ad3;
   border-bottom: 1px solid white;
 }
 .action >button {
-  background-color: #6231a2;
+  background-color: #742ad3;
   outline: none;
   padding: 0 1.5rem;
   border: none;
