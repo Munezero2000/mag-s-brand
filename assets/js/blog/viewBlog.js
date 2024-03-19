@@ -67,6 +67,4 @@ function createIconLink(href, iconClass, blogId = null) {
   return iconLink;
 }
 
-
-
 displayBlogPosts();

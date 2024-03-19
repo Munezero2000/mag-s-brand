@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         let answer = await UserServive.getUserById(authenticatedUser._id)
         let user = await answer.json();
 
-        commenterImage.src = `https://mag-s-brand-backend.onrender.com/uploads/${user.profile}`
+        commenterImage.src = user.profile
         logout.innerHTML = '<a ><i class="fa-solid fa-right-from-bracket"></i> Logout</a>'
     } else {
         subscribeSection.style.display = "flex";
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const date = blogSection.querySelector("#blog-date");
         const content = blogSection.querySelector("#blog-content-details");
 
-        image.src = `https://mag-s-brand-backend.onrender.com/uploads/${blog.thumbnail}`;
+        image.src = blog.thumbnail;
         title.textContent = blog.title;
         author.textContent = `Written by ${blog.author.username}`;
         const dateCreated = blog.createdAt;
