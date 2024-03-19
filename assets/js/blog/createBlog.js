@@ -9,7 +9,7 @@ const imageUploadInput = document.querySelector("#imageInput");
 
 // Validation
 title.addEventListener("input", (e) => {
-  if (!validateTitle(e.target.value)) {
+  if (!BlogService.validateTitle(e.target.value)) {
     title.style.border = "2px solid darkred";
   } else {
     title.style.border = "2px solid #742ad3";
@@ -17,7 +17,7 @@ title.addEventListener("input", (e) => {
 });
 
 content.addEventListener("input", (e) => {
-  if (!validateContent(tinymce.get("blog-description").getContent())) {
+  if (!BlogService.validateContent(tinymce.get("blog-description").getContent())) {
     content.style.border = "2px solid darkred";
   } else {
     content.style.border = "2px solid #742ad3";
@@ -29,8 +29,8 @@ addBlogBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   console.log(tinymce.get("blog-description").getContent());
   if (
-    validateTitle(title.value) &&
-    validateContent(tinymce.get("blog-description").getContent())
+    BlogService.validateTitle(title.value) &&
+    BlogService.validateContent(tinymce.get("blog-description").getContent())
   ) {
     const formData = new FormData();
     formData.append("title",title.value);

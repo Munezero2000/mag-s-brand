@@ -56,7 +56,7 @@ function renderBlogs(containerDiv, blogs, filter) {
     filteredBlogs.forEach((blog) => {
         let cardElement = createCard(blog);
         cardElement.addEventListener('click', (e)=>{
-            window.location.assign(`../../blog-pages/blogdetails.html#${blog._id}`)
+            window.location.assign(`../blog-pages/blogdetails.html#${blog._id}`)
         })
         container.append(cardElement);
     });
@@ -67,6 +67,40 @@ logout.addEventListener('click', (e)=>{
     signedUser.textContent ="";
     logout.innerHTML = '<a href="../../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
 });
+function createCard(data) {
+    const card = document.createElement('div');
+    card.classList.add('blog-card', 'flex', 'flex-col');
+    
+    const image = document.createElement('img');
+    image.src = data.thumbnail;
+    image.alt = data.title;
+    
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('text-white');
+    
+    const datePara = document.createElement('p');
+    const dateCreated = data.createdAt; 
+    const parsedDate = new Date(dateCreated);
+    const formattedDate = parsedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+    datePara.textContent = formattedDate;
+    
+    const titlePara = document.createElement('p');
+    titlePara.textContent = data.title;
+    
+    const descriptionPara = document.createElement('p');
+    let message = "🌟Read more now!....🚀";
+    descriptionPara.innerHTML= message;
+   
+  
+    contentDiv.appendChild(datePara);
+    contentDiv.appendChild(titlePara);
+    contentDiv.appendChild(descriptionPara);
+  
+    card.appendChild(image);
+    card.appendChild(contentDiv);
+    
+    return card;
+  }
 
 async function showBlogs (){
     const response = await BlogService.getAllBlogs();

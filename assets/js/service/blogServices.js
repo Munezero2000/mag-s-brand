@@ -96,4 +96,12 @@ export default class BlogService {
         }
     }
 
+    static validateTitle(titleValue) {
+        return titleValue.trim() !== "" && titleValue.length >= 20;
+    }
+
+    static validateContent(contentValue) {
+        return contentValue.trim() !== "" && contentValue.length >= 100;
+    }
+
 }
