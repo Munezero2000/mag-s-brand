@@ -35,9 +35,16 @@ document.addEventListener("DOMContentLoaded", async (e) => {
 
 signinBtn.addEventListener("click", async (e) => {
   e.preventDefault();
+  const loader = document.getElementById('loader');
+  const overlay = document.getElementById('overlay');
+  loader.style.display = 'block';
+  loader.style.display = 'block';
+  overlay.style.display = 'block';
   if (UserServive.validateEmail(email.value) && UserServive.validatePassword(password.value)) {
     const user = { email: email.value, password: password.value };
     const response = await UserServive.authenticateUser(user);
+    loader.style.display = 'none';
+    overlay.style.display = 'none';
     if (response.ok) {
       const token = response.headers.get("x-auth-token");
       const res = await response.json();

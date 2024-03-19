@@ -103,7 +103,10 @@ function createCard(data) {
   }
 
 async function showBlogs (){
+    const loader = document.getElementById('loader');
+    loader.style.display = 'block';
     const response = await BlogService.getAllBlogs();
+    loader.style.display = 'none';
     const data = await response.json();
     const blogs=data.blogs;
     renderBlogs('blogs-card-container',blogs, filter)

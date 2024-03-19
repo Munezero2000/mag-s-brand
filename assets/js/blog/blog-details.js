@@ -27,6 +27,8 @@ let authenticatedUser
 
 // fill the page with the blog content dynamically
 document.addEventListener("DOMContentLoaded", async () => {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'block';
     authenticatedUser = UserServive.getAuthenticatedUser();
     blogId = location.hash.slice(1);
     if (!blogId) {
@@ -77,6 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         commentCount.textContent = `${blogCommentsDetails.commentsCount || 0} Comments`;
         renderBlogComment(blogCommentsDetails.comments)
     }
+    loader.style.display = 'none';
 
 });
 
@@ -122,7 +125,7 @@ commentBtn.addEventListener('click', async (e) => {
     console.log(comment);
     const response = await CommentService.createComment(comment);
     const data = await response.json();
-    if(response.ok){
+    if (response.ok) {
         commentBox.textContent = "";
         window.location.reload();
     }
@@ -147,7 +150,7 @@ function renderBlogComment(blogComment) {
     blogComment.forEach(comment => {
         // Create user profile image element
         const userProfileImg = document.createElement("img");
-        userProfileImg.src = `https://mag-s-brand-backend.onrender.com/uploads/${comment.author.profile}`;
+        userProfileImg.src = comment.author.profile || "";
         userProfileImg.classList.add("profile-image"); // Add any necessary classes
 
         // Create user profile container element

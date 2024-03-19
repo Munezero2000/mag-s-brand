@@ -19,6 +19,8 @@ let authenticated;
 let user;
 
 document.addEventListener("DOMContentLoaded", async (e) => {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'block';
     authenticated = UserServive.getAuthenticatedUser();
     if (!authenticated) {
         window.location.href = "../login.html";
@@ -28,6 +30,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             dashboard.style.display = "none";
         }
         const response = await UserServive.getUserById(authenticated._id);
+        loader.style.display = 'none';
         if (response.ok) {
             user = await response.json();
             names.textContent = user.username;
