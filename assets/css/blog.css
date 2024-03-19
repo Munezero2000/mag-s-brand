@@ -231,27 +231,43 @@
 
 @media (max-width: 767px) {
   #subscribe {
-    font-size: 2rem;
-    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin-top: 2rem;
+    background-color: #742ad3;
+    color: white;
+    
   }
 
   #sub-desc {
-    width: 70%;
+    width: 100%;
   }
 
   #sub-img {
+    display: none;
     width: 30%;
   }
 
   #subscribe>div>div>input {
-    width: 70%;
+    padding: 1rem ;
+    font-size: 1.5rem;
+    background-color: white;
+    color: #212121;
+  }
+
+  #subscribe>div>div{
+    margin-top:  1rem;
   }
 
   #subscribe>div>div>button,
   #form-btn {
-    padding: 1rem 3rem;
-    font-size: 2rem;
-    width: 25%;
+    padding: 1rem ;
+    font-size: 1.5rem;
+    width: auto;
+    background-color: white;
+    color: #212121;
+    border-radius: 0px;
+    border: none;
   }
 }
 

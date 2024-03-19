@@ -31,8 +31,7 @@
         </ul>
     </nav>
     <section id="blog-section">
-        <img src=""
-            alt="">
+        <img src="" alt="">
         <div>
             <h2 id="blog-title"></h2>
             <p id="blog-author" class="delighted"></p>
@@ -48,10 +47,10 @@
             <p id="comments-count"></p>
         </div>
         <div id="comment-desc" class="flex flex-center">
-            <div id="user-profile" class="flex align-center">
-                <img id="commenter-img" class="" src="" alt="">
-            </div>
-            <div id="comment" class="flex flex-col">
+            <div id="comment" class="flex">
+                <div id="user-profile" class="flex align-center">
+                    <img id="commenter-img" class="" src="../assets/images/favicon.png" alt="">
+                </div>
                 <p style="font-size: 1.5rem;" id="feedback"></p>
                 <textarea placeholder="Enter your comment here ...." id="comment-text" type="text"></textarea>
             </div>
@@ -127,9 +126,10 @@
             <p id="sub-feedback" style="font-size: 1.5rem; color: green; width: 70%;"></p>
             <p>Subsribe to my newsletter so you won't miss any updates</p>
             <div class="flex"><input id="subscribe-input" type="text" placeholder="Enter your email">
-                <button id="subscribe-btn"  class="flex space-between">
-                    <p>Send</p> <i class="fa-solid fa-paper-plane"></i>
-                </button></div>
+                <button id="subscribe-btn" class="flex space-between">
+                    <p>Send</p> <i style="display: block;" class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
         </div>
         <div id="sub-img" class="flex flex-end">
             <img src="../assets/images/blogger.svg" alt="">
