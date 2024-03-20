@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", async(e)=>{
     authBtn.addEventListener('click', (e)=>{
       e.preventDefault();
       UserServive.logout();
-      location.href="login.html";
+      location.href="./login.html";
     })
   }else{
-    authBtn.innerHTML = '<a class="nav-icon" href="../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
+    authBtn.innerHTML = '<a class="nav-icon" href="./login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
   }
 })
 
