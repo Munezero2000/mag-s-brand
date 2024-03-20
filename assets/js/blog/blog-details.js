@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else {
         subscribeSection.style.display = "flex";
         signedUser.textContent = "Register today😊"
-        logout.innerHTML = '<a href="../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
+        logout.innerHTML = '<a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
     }
 
     // Render blog content in details 
@@ -271,5 +271,5 @@ logout.addEventListener('click', (e) => {
     UserServive.logout();
     location.reload();
     signedUser.textContent = "Register today😊";
-    logout.innerHTML = '<a href="./login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
+    logout.innerHTML = '<a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
 });

@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", (e)=>{
     }else{
         accountLink.style.display ="none";
         // signedUser.textContent = "Register today😊"
-        logout.innerHTML = '<a href="./login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
+        logout.innerHTML = '<a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
     }
 })
 
@@ -65,7 +65,7 @@ logout.addEventListener('click', (e)=>{
     UserServive.logout();
     location.reload();
     signedUser.textContent ="";
-    logout.innerHTML = '<a href="./login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
+    logout.innerHTML = '<a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
 });
 function createCard(data) {
     const card = document.createElement('div');
