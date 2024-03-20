@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async(e)=>{
       location.href="./login.html";
     })
   }else{
-    authBtn.innerHTML = '<a class="nav-icon" href="./login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
+    authBtn.innerHTML = '<a class="nav-icon" href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
   }
 })
 
