@@ -60,24 +60,26 @@ export default class BlogService {
         }
     }
 
-    static async updateBlogLikes(blogId, userId) {
+    static async updateBlogLikes(id, likes) {
         const token = UserServive.getUserToken();
         try {
-            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/blogs/${id}`, {
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/blogs/${id}/likes`, {
                 method: "PUT",
                 headers: {
+                    "Content-Type": "application/json",
                     "x-auth-token": token
                 },
-                body: Likes
+                body: JSON.stringify({ likes }) // Sending likes array as JSON
             });
 
             return response;
         }
         catch (error) {
-            console.error(`Error while updating: ${error}`);
+            console.error(`Error while updating blog likes: ${error}`);
             throw error;
         }
     }
+
 
     static async deleteBlog(id) {
         const token = UserServive.getUserToken();

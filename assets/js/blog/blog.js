@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", (e)=>{
         registerBtn.style.display = "none";
         logout.innerHTML='<a ><i class="fa-solid fa-right-from-bracket"></i> Logout</a>'
     }else{
-       
+        accountLink.style.display ="none";
         // signedUser.textContent = "Register today😊"
         logout.innerHTML = '<a href="../../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
     }

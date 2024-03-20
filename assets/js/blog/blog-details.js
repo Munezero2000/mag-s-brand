@@ -19,6 +19,7 @@ const subscribeSection = document.getElementById("subscribe")
 const blogSection = document.querySelector("#blog-section");
 const commenterImage = document.getElementById("commenter-img")
 const accountLink = document.getElementById("account-link");
+const loader = document.getElementById('loader');
 
 // getting the # from a Blog ID
 let blogId;
@@ -27,7 +28,7 @@ let authenticatedUser
 
 // fill the page with the blog content dynamically
 document.addEventListener("DOMContentLoaded", async () => {
-    const loader = document.getElementById('loader');
+
     loader.style.display = 'block';
     authenticatedUser = UserServive.getAuthenticatedUser();
     blogId = location.hash.slice(1);
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = await BlogService.getAllBlogById(blogId);
     const blog = await data.json();
 
+    updateLikeUI(blogId, authenticatedUser);
     // Check authentication status
     if (authenticatedUser !== null) {
         subscribeSection.style.display = "none";
@@ -116,33 +118,23 @@ subscribeBtn.addEventListener('click', (e) => {
 // add Comment when the button is clicked
 commentBtn.addEventListener('click', async (e) => {
     e.preventDefault();
+    loader.style.display = 'block';
+    if (!authenticatedUser) {
+        window.location.assign("../../login.html")
+    }
 
     const comment = {
         author: authenticatedUser._id,
         blog: blogId,
         content: commentBox.value
     }
-    console.log(comment);
     const response = await CommentService.createComment(comment);
+    loader.style.display = 'none';
     const data = await response.json();
     if (response.ok) {
         commentBox.textContent = "";
         window.location.reload();
     }
-    console.log(data);
-
-    // if (user === null) {
-    //     window.location.assign("../../login.html")
-    // } else {
-    //     if (commentBox.value.length < 10) {
-    //         feedback.textContent = "Comment must at least be 10 characters!";
-    //         feedback.style.color = "red";
-    //     } else {
-    //         feedback.style.color = "green"
-    //         addCommentToLocalStorage(user.id, blogId, commentBox.value)
-    //         window.location.reload();
-    //     }
-    // }
 });
 
 
@@ -215,31 +207,49 @@ function calculateTimeSinceCommented(commentDate) {
 }
 
 likeBtn.addEventListener('click', checkLikeStatus);
-
-function checkLikeStatus() {
-    const user = getAuthenticatedUser();
-    const likes = getLikesFromLocalStorage();
-    if (user === null) {
+async function checkLikeStatus() {
+    const user = UserServive.getAuthenticatedUser();
+    const response = await BlogService.getAllBlogById(blogId);
+    const blog = await response.json();
+    if (!user) {
         window.location.assign("../../login.html");
     } else {
-        const checkUser = likes.find((like) => {
-            return like.user === user.id;
+        const checkUser = blog.likes.find((like) => {
+            return like === user._id;
         });
-        // THIS NEEDS MY ATTENTION
         if (checkUser === undefined) {
-            likeBtn.classList.replace('fa-solid', 'fa-regular');
-            addLikeToLocalStorage(user.id, blogId);
-        } else {
             likeBtn.classList.replace('fa-regular', 'fa-solid');
-            deleteLikeFromLocalStorage(user.id, blogId);
+            blog.likes.push(user._id);
+        } else {
+            likeBtn.classList.replace('fa-solid', 'fa-regular');
+            blog.likes = blog.likes.filter((like) => like.user !== user.id);
         }
-
+        const updatedBlogResponse = await BlogService.updateBlogLikes(blogId, blog.likes);
+        const updatedBlog = await updatedBlogResponse.json();
+        // Update like count on the UI
+        likeCount.textContent = `${updatedBlog.likes.length} likes`;
     }
-    const blogLikes = likes.filter((like) => {
-        return like.blog == blogId
-    })
-    likeCount.textContent = `${blogLikes.length} likes`
 }
+
+async function updateLikeUI(blogId, user) {
+    const response = await BlogService.getAllBlogById(blogId);
+    const blog = await response.json();
+
+    if (user) {
+        const checkUser = blog.likes.find((like) => like === user._id);
+        if (checkUser !== undefined) {
+            likeBtn.classList.replace('fa-regular', 'fa-solid');
+        } else {
+            likeBtn.classList.replace('fa-solid', 'fa-regular');
+        }
+    } else {
+        likeBtn.classList.replace('fa-solid', 'fa-regular');
+    }
+
+    likeCount.textContent = `${blog.likes.length} likes`;
+}
+
+
 
 
 logout.addEventListener('click', (e) => {
