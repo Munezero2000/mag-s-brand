@@ -271,5 +271,5 @@ logout.addEventListener('click', (e) => {
     UserServive.logout();
     location.reload();
     signedUser.textContent = "Register today😊";
-    logout.innerHTML = '<a href="../../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
+    logout.innerHTML = '<a href="./login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
 });
