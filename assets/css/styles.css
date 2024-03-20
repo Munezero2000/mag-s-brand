@@ -1009,10 +1009,13 @@ html {
   #login-container {
     flex-direction: column;
     width: 100%;
+    border: none;
   }
 
   .login-left {
     width: 100%;
+    border: 1.5px solid #742ad3;
+    margin-bottom: 1rem;
   }
 
   .login-left>p {
@@ -1065,6 +1068,9 @@ html {
     padding: 1rem;
     margin: 0;
     font-size: 1.5rem;
+  }
+  .login-right{
+    border: 1.5px solid#742ad3;
   }
 
   .login-right>p {
