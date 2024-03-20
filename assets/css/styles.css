@@ -869,7 +869,7 @@ html {
   width: 80%;
   display: flex;
   border: 2px solid #742ad3;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 .login-left {
@@ -997,7 +997,7 @@ html {
 @media (max-width: 767px) {
   .auth-container {
     height: auto;
-    padding: 2rem;
+    padding: 1rem;
   }
 
   #contact-form {
@@ -1008,7 +1008,7 @@ html {
 
   #login-container {
     flex-direction: column;
-    width: 90%;
+    width: 100%;
   }
 
   .login-left {
@@ -1016,7 +1016,7 @@ html {
   }
 
   .login-left>p {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .view-btn {
@@ -1038,6 +1038,42 @@ html {
   .btn {
     font-size: 2.5rem;
     padding: 1rem 4rem;
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    margin: 1rem 0.2rem;
+  }
+
+  .form-element {
+    margin: 1rem 0;
+  }
+  
+  .form-element>label {
+    display: block;
+    font-size: 2rem;
+    color: #742ad3;
+  }
+  
+  .form-element>input {
+    border: 1.4px solid #742ad3;
+    padding: 1rem;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .login-right>p {
+    font-size: 2rem;
+  }
+  
+
+  .login-left {
+    padding: 1.5rem;
   }
 }
 
