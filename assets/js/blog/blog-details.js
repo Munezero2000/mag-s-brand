@@ -85,14 +85,29 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 });
 
-subscribeBtn.addEventListener('click', (e) => {
+subscribeBtn.addEventListener('click', async(e) => {
+    e.preventDefault();
+    
+    loader.style.display = 'block';
     subFeedback.style.transition = "all 300ms ease-in-out";
-    if (validateEmail(subscribe.value)) {
-        subFeedback.style.display = "block";
-        subFeedback.style.backgroundColor = "white";
-        subFeedback.style.padding = "1rem";
-        subFeedback.style.borderRadius = "0.5rem";
-        subFeedback.textContent = addSubscriberEmailToLocalStorage(subscribe.value);
+    if (UserServive.validateEmail(subscribe.value)) {
+        const response = await BlogService.addSubscriber(subscribe.value);
+        loader.style.display = 'none';
+        const data = await response.json();
+        if (response.ok) {
+            subFeedback.style.display = "block";
+            subFeedback.style.backgroundColor = "white";
+            subFeedback.style.padding = "1rem";
+            subFeedback.style.borderRadius = "0.5rem";
+            subFeedback.textContent = "Subscribed successfully";
+        }else{
+            subFeedback.style.display = "block";
+            subFeedback.style.backgroundColor = "white";
+            subFeedback.style.padding = "1rem";
+            subFeedback.style.borderRadius = "0.5rem";
+            subFeedback.style.color = "darkred";
+            subFeedback.textContent = data.message;
+        }
 
         setTimeout(() => {
             subFeedback.textContent = "";
@@ -253,7 +268,8 @@ async function updateLikeUI(blogId, user) {
 
 
 logout.addEventListener('click', (e) => {
-    endSession();
+    UserServive.logout();
+    location.reload();
     signedUser.textContent = "Register today😊";
     logout.innerHTML = '<a href="../../login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
 });

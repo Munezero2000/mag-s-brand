@@ -1,3 +1,4 @@
+import BlogService from "../service/blogServices.js";
 import UserServive from "../service/userServices.js";
 
 const search = document.getElementById("search-input");
@@ -6,6 +7,7 @@ const admins = document.getElementById("admins");
 const reader = document.getElementById("readers");
 const select = document.getElementById("select");
 const subs= document.getElementById("subscribers");
+const loader = document.getElementById('loader');
 
 let filter = "";
 
@@ -24,7 +26,11 @@ document.addEventListener("DOMContentLoaded", async () =>{
         return;}
 
     const data = await getUserData();
-    const subscribers = JSON.parse(localStorage.getItem("subscribers")) || [];
+    loader.style.display = 'block';
+    const response = await BlogService.getAllSubscribers();
+    loader.style.display = 'none';
+    const subscribers = await response.json();
+    console.log(subscribers);
     allUsers.textContent = data.usersCount;
     admins.textContent = renderUsersInformation(data.users, 'admin').length;
     reader.textContent = renderUsersInformation(data.users,'reader').length;

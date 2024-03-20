@@ -98,6 +98,43 @@ export default class BlogService {
         }
     }
 
+    static async addSubscriber(email) {
+        try {
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/subscribers`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email })
+            });
+            return response;
+        }
+        catch (error) {
+            console.error(`Error while adding subscriber: ${error}`);
+            throw error;
+        }
+    }
+
+    static async getAllSubscribers() {
+        const token = UserServive.getUserToken();
+        try {
+            const response = await fetch(`https://mag-s-brand-backend.onrender.com/api/subscribers`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-auth-token": token
+                }
+            });
+            return response;
+        }
+        catch (error) {
+            console.error(`Error while getting subscribers: ${error}`);
+            throw error;
+        }
+    }
+
+
+
     static validateTitle(titleValue) {
         return titleValue.trim() !== "" && titleValue.length >= 20;
     }
