@@ -55,7 +55,7 @@ signinBtn.addEventListener("click", async (e) => {
         localStorage.setItem("user", JSON.stringify(res));
         message.textContent = "🚨Redirecting......";
         message.style.color = "green";
-        window.location.assign("../blog-pages/blog.html");
+        window.location.assign("./blog-pages/blog.html");
       }
     } else {
       message.textContent = "Invalid email or password";
