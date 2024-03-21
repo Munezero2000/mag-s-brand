@@ -56,7 +56,7 @@ function renderBlogs(containerDiv, blogs, filter) {
     filteredBlogs.forEach((blog) => {
         let cardElement = createCard(blog);
         cardElement.addEventListener('click', (e)=>{
-            window.location.href = `blogdetails.html#${blog._id}`;
+            window.location.assign(`../../blog-pages/blogdetails.html#${blog._id}`)
         })
         container.append(cardElement);
     });
