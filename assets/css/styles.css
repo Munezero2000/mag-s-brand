@@ -638,7 +638,7 @@ html {
 .blog-card {
   width: 30%;
   background-color: #742ad3;
-  /* border-radius: 10px; */
+  border-radius: 1.5px;
   overflow: hidden;
   margin: 2rem 0;
   transition: all 200ms ease-out;
